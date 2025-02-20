@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div> 
+        <h2>Form</h2>
+        <form action="#" method="post">
+            <table>
+                <tr><td>UserName</td><td><input type="text" id="userName" name="userName"/></td></tr>
+                <tr><td>Password</td><td><input type="password" id="pswd" name="pswd"/></td></tr>
+                <tr><td>Email</td><td><input type="email" id="email"  name="email"/></td></tr>
+                <tr><td>Mobile</td><td><input type="number" id="mob" name="mob"/></td></tr>
+                <tr><td>DOB</td><td><input type="date" id="dob" name="dob"/></td></tr>
+                <tr><td>Department</td>
+                    <td>
+                        <select id="department" name="dpt">
+                            <option>CSE</option>
+                            <option>MECH</option>
+                            <option>CIVIL</option> 
+                            <option>ECE</option>
+                        </select>
+                    </td></tr>
+                <tr><td>Gender</td>
+                    <td><input type="radio" id="gMale" name="gender" value="male"/>Male
+                    <input type="radio" id="gFemale" name="gender" value="female"/>Female
+                    <input type="radio" id="gOthers" name="gender" value="others"/>Others</td>
+                </tr>
+                <tr><td>Skills</td>
+                    <td><input type="checkbox" name="skills" value="HTML"/>HTML
+                    <input type="checkbox" name="skills" value="css"/>CSS
+                    <input type="checkbox" name="skills" value="js"/>JS</td>
+                </tr>
+                <tr><td>Colo Picker</td><td><input type="color" name="clr" /></td></tr>
+                <tr><td>Photo</td><td><input type="file"  name="photo"/></td></tr>
+                <tr><td>Join Month</td><td><input type="month" name="month" /></td></tr>
+                <tr><td>Range</td><td><input type="range" name="range" /></td></tr>
+                <tr><td>SearchBox</td><td><input type="search"  name="srtxt"/></td></tr>
+                <tr><td>Time</td><td><input type="time"  name="time"/></td></tr>
+                <tr><td>Week</td><td><input type="week" name="week"/></td></tr>
+                <tr><td></td><td><input type="reset" value="cancel" /><input type="submit" value="Register" /></td></tr>
+                
+            </table>
+        </form>
+    </div>
+
+
+    <h2>Table</h2>
+
+    <div>
+        Slno  Name     Designation
+        1     Dhivakar Manager
+        2     Tara     CEO
+        3     Aadhi    TL
+        4     Yokesh   Member
+    </div>
+    <div>
+        <table  cellspacing="10" cellpadding="15">
+            <tr>
+                <td>SlNo</td>
+                <td>Name</td>
+                <td>Designation</td>
+            </tr>
+            <tr>
+                <td rowspan="2">1</td>
+                <td>Dhivakar</td>
+                <td>Manager</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td colspan="2">Tara</td>
+                <td>CEO</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td></td>
+                <td>TL</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Yokesh</td>
+                <td>Member</td>
+                <td>21654</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table cellspacing="15">
+            <tr>
+                <td><img src="./assets/food1.png" width="300px"></td>
+                <td>Food one jdsbgksd gue sibi i sv si vvis is vi </td>
+                <td> <button type="button" > Add to Cart</button></td>
+            </tr>
+            <tr>
+                <td><img src="./assets/food2.png" width="300px"></td>
+                <td>Food one jdsbgksd gue sibi i sv si vvis is vi </td>
+                <td> <button type="button" > Add to Cart</button></td>
+            </tr>
+            <tr>
+                <td><img src="./assets/food3.png" width="300px"></td>
+                <td>Food one jdsbgksd gue sibi i sv si vvis is vi </td>
+                <td> <button type="button" > Add to Cart</button></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table width="2000px">
+            <tr>
+                <td><img src="./assets/food1.png" width="300px"></td>
+                <td>ldsgh s osgis hsdi bkbzsib isd bi szbi</td>
+            </tr>            
+            <tr>
+                <td>ldsgh s osgis hsdi bkbzsib isd bi szbi</td>
+                <td><img src="./assets/food1.png" width="300px"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        href => Hyper Reference<br>
+        Tag , attribute <br>
+        <a href="http://www.google.com" target="_blank"> Google </a><br>
+
+        <img src="./asserts/istockphoto-1786036352-1024x1024.jpg"><br>
+        <audio controls>
+            <source src="./asserts/Amma Amma - Raghuvaran Btech Bgm.mp3" type="audio/mp3">
+        </audio>
+        <video controls>
+            <source src="./asserts/En_life_mattum_yaen_ipdi.mp4" type="video/mp4">
+        </video>
+        <br>
+        <a href="http://www.google.com">
+            <img src="./asserts/istockphoto-1786036352-1024x1024.jpg" width="300px">
+        </a>
+        <br>
+        <iframe src="./sample.html"></iframe>
+
+        <img src="./asserts/istockphoto-1786036352-1024x1024.jpg" usemap="#dogMap" width="610" height="406">
+        <map name="dogMap">
+            <area shape="circle" coords="243,151,50" href="http://www.yahoo.com" >
+            <area shape="rect" coords="193,327,312,374" href="http://www.gmail.com" target="_blank">
+            <area shape="poly" coords="321,137,349,110,355,81,397,57,399,88,400,122,392,154,361,170,340,165" href="http://www.amazon.com" target="_blank"> -->
+        </map>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
