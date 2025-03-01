@@ -6,29 +6,74 @@
     <title>login</title>
 </head>
 <body>
-    <nav>
-        <a href="home.html">home</a>|
-        <a href="login.html">login</a>|
-        <a href="register.html">register</a>|
-        <a href="aboutus.html">aboutus</a>|
-        <a href="contacts.html">contactus</a>|
+    <style>
+        div{
+            height: 110PX;
+            width: 500PX;
+            padding: 150PX;
+            margin: 10px;
+            padding-right: 150px;
+            
+            
+        }
+        input{
+            display: flex;
+            width: 250px;
+            margin-top: 10px;
+            height: 30px;
+        
+        }
+        button{
+            width: 80px;
+            height: 30px;
+            margin-top: 10px;
+            background-color:darkkhaki;
+            color: red;
+            border-radius: 5px;
+            border-style: none;
+        }
+        h2{
+            width: 20px;
+            height: 20px;
+            padding-top: 100px;
+            font-family:initial;
+            color: darkmagenta;
+            font-size: xx-large;
+           
+           
+        }
+        button:hover{
+            background-color: chartreuse;
+            transform: scale(1.1);
+            border-right: 5px;
+        }
+        body{
+            background-image: url(../projects/asserts/animation/bg.img);
+            background-size:cover;
+            background-repeat: no-repeat;
+            font-size: x-large;
+        
+        }
+        
+        
+    </style>
 
-    </nav>
 
 
     <center>
     <h2>login</h2>
-</center>
+    </center>
 
-    <tr><td>username</td><td><input type="text" id="username" name="username"/></td></tr><Br>
-    <tr><td>password</td><td><input type="password" id="password" name="password"/></td></tr><br>
+    <form>
 
-
-
-    <tr><td><input type="submit" value="login"/></td></tr> 
-    <tr><td><input type="reset" value="reset"/></td></tr>
-
-
+    <div class="container">
+        <input type="Username" placeholder="Username">
+        <input type="Password" placeholder="Password">
+        <button><a href="../projects/home.html">Login</a></button>
+        <button>Reset</button>
+        <button><a href="../projects/register.html">Register</a></button>
+    </div>
+    </form>
 
 </body>
 </html>

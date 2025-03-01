@@ -6,38 +6,71 @@
     <title>register</title>
 </head>
 <body>
-    <nav>
-        <a href="home.html">home</a>|
-        <a href="login.html">login</a>|
-        <a href="register.html">register</a>|
-        <a href="aboutus.html">aboutus</a>|
-        <a href="contacts.html">contactus</a>|
+    <style>
+        form{
+            padding-left: 150px;
+            padding-top: 100px;
+            color: red;
+            
+            
 
-    </nav>
+            
+        }
+        h2{
+            padding-top: 50px;
+            color: red;
+            
 
+        }
+        button{
+            background-color: darksalmon;
+            margin-left: 80px;
+            margin-top: 30px;
+            border-radius: 20px;
+            width: 100px;
+            height: 40px;
+            font-size: x-large;
+              
+        }
+        button:hover{
+            transform: scale(1.2);
+            background-color: fuchsia;
+        }
+        body{
+            background-image: url(../projects/asserts/animation/regbg\ img.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-size: x-large;
+        
+        }
+    </style>
 
 
     <center>
-    <h2>register form</h2>
+    <h2>Register form</h2>
     </center>
 
     <form action="#" method="get">
         <table>
-            <tr><td>first name</td><td><input type="text" id="username"  name="username"/></td></tr>
-            <tr><td>last name</td><td><input type="text" id="username"  name="username"/></td></tr>
-            <tr><td>date of birth</td><td><input type="date" id type="dob" name="date of birth"/></td></tr>
-            <tr><td>email</td><td><input type="mail" id="mail" name="email"/></td></tr>
-            <tr><td>mobile no</td><td><input type="number" id="mobile no" name="phone no"/></td></tr>
-            <tr><td>address</td>
+            <tr><td>First name</td><td><input type="text" id="username"  name="username"/></td></tr>
+            <tr><td>Last name</td><td><input type="text" id="username"  name="username"/></td></tr>
+            <tr><td>Date of birth</td><td><input type="date" id type="dob" name="date of birth"/></td></tr>
+            <tr><td>Email</td><td><input type="mail" id="mail" name="email"/></td></tr>
+            <tr><td>Mobile no</td><td><input type="number" id="mobile no" name="phone no"/></td></tr>
+            <tr><td>Address</td>
                 <td><textarea>
 
                 </textarea></td>
             
             </tr>
-
-            <td><input type="submit"  value="register"/></td>
-            <td><input type="reset" value="reset"/></td>
+            <tr><td>User name</td><td><input type="text" id="username" name="user name"/></td></tr>
+            <tr><td>Password</td><td><input type="password" id="username" name="pswd"/></td></tr>
+            <tr><td>Conform password</td><td><input type="password" id="password" name="password"/></td></tr>
+            
     </table>
     </form>
+            <button><a href="../projects/login.html">Register</a></button>
+            <button>Reset</button>
+            
 </body>
 </html>
