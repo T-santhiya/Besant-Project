@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+      .container{
+        background-color: aqua;
+        display: flex;
+        margin: 100px;
+        width: 200px;
+        height: 200px;
+        border: 2px solid black;
+        justify-content: center;
+      }
+      .imgtag {
+        width: 100%;
+        height: 100%;
+      }
+      .container .imgtag:hover{
+        opacity: 0;
+      }
+      .container:hover .textdiv {
+        opacity: 1;
+      }
+      .textdiv{
+        opacity: 0;
+        position: fixed;
+      }
+        
+    </style>
+
+        <div class="container">
+            <img class="imgtag" src="../asserts.html/projects/asserts/fruits/apple.jpg" alt="apple">
+            <div class="textdiv">
+                <h2>hii im apple</h2>
+            </div>
+        </div>
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .sidebar{
+            width: 30px;
+            height: 200px;
+            margin:100px;
+            background-color: darkgrey;
+            transition: width 0.5s ease;
+            position: fixed;
+            overflow: hidden;
+        }
+        .sidebar div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        strong{
+            font-size: larger;
+        }
+        .sidebar:hover{
+            width: 150px;
+        }
+        .sidebar a{
+            opacity: 0;
+            text-decoration: none;
+            color: white;
+            padding-left: 10px;
+            transition: opacity 0.3s ease;   
+        }
+        .sidebar:hover a{
+            opacity: 1;
+        } 
+        .sidebar .a:hover{
+            background-color:aquamarine;
+            transition: background-color 1s ease;
+        }
+
+    </style>
+
+
+<div class="sidebar">
+    <div class="a">
+        <strong>H</strong><a href="../asserts.html/projects/home.html">Home</a>
+    </div>
+    <div class="a">
+        <strong>A</strong><a href="../asserts.html/projects/aboutus.html">About Us</a>
+    </div>
+    <div class="a">
+        <strong>C</strong><a href="../asserts.html/projects/contacts.html">Contact Us</a>
+    </div>
+    <div class="a">
+        <strong>R</strong><a href="../asserts.html/projects/register.html">Register</a>
+    </div>
+</div>
+  
+    
+    
+</body>
+</html>
