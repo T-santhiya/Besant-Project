@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="printHello()">
+    <div>
+        <h2 class="bgClr">Function & Events</h2>
+
+        <button type="button" onclick="printHello()">Click Me</button>
+        <br>
+        <img src="../asserts.html/projects/asserts/fruits/maathulai.jpg" onmouseout="printHello()"/>
+        <br>
+        <select onchange="printHello()">
+            <option>TN</option>
+            <option>KL</option>
+            <option>KA</option>
+            <option>AP</option>
+        </select>
+        <br>
+        <input type="text" id="user" name="user" onkeyup="getInputData()"/>
+        <br>
+        <input type="radio" id="gmale" name="gender"/>Male
+        <input type="radio" id="gfemale" name="gender"/>Female
+        <input type="radio" id="gothers" name="gender"/>Others
+        <br>
+        <form action="#" method="get" onsubmit="printHello()" class="bgClr">
+            <input type="text" id="user1" name="user1" />
+            <input type="submit"/>
+        </form>
+
+        <style>
+            .bgClr{
+                background-color: aqua;
+            }
+        </style>
+
+        <script>
+            // console.log("Hello");
+            // console.log( add(10,10) );
+            // sub(100,50);
+            // console.log( sayHello() );
+            // printHello();
+
+            function getInputData(){
+                console.log(document);
+                console.log(document.getElementById('user'));
+                console.log(document.getElementById('user').value);
+                console.log(document.getElementsByName('gender'));
+                console.log(document.getElementsByTagName('input'));
+                console.log(document.getElementsByClassName('bgClr'));
+            }
+
+            function add(v1, v2){
+                return v1+v2;
+            }
+            function sub(v1, v2){
+                console.log(v1-v2);
+            }
+            function sayHello(){
+                return "Hello";
+            }
+            function printHello(){
+                //alert("Hello All");
+                console.log("Printing Hello");
+            }
+
+           
+        </script>
+
+    </div>
+</body>
+</html>
