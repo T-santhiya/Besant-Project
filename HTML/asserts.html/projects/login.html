@@ -59,7 +59,7 @@
         
     </style>
 
-
+   
 
     <center>
     <h2>login</h2>
@@ -68,13 +68,39 @@
     <form>
 
     <div class="container">
-        <input type="Username" placeholder="Username">
-        <input type="Password" placeholder="Password">
-        <button><a href="../projects/home.html">Login</a></button>
+        <input id="username" type="Username" placeholder="Username">
+        <input id="password" type="Password" placeholder="Password">
+        <button><a href="../projects/home.html" onclick="print()">Login</a></button>
         <button>Reset</button>
         <button><a href="../projects/register.html">Register</a></button>
     </div>
     </form>
+
+    <script>
+    
+
+        function print(){
+            var uname= document.getElementById('username').value;
+            var pswd= document.getElementById('password').value;
+           console.log(uname);
+           console.log(pswd);
+            alert("USERNAME : "+ uname+ "\n"+ "PASSWORD : " +pswd);
+            console.log("print");
+
+            if(pswd.length >5){
+               alert("character number ok");
+
+            } else{
+                alert("you have to enter at least 6 digit!");
+                
+               
+            }
+            
+        }
+
+        
+        
+    </script>
 
 </body>
 </html>

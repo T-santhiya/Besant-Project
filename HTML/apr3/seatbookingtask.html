@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    
+</head>
+
+<style>
+    #one, #two, #three, #four, #five, #six, #seven, #eight,#nine,#ten,#eleven,#twelve,#thirteen,#fourteen,#fifteen,#sixteen,#seventeen,#eighteen,#nineteen,#twenty{
+        height: 80px;
+        width: 80px;
+        border-style: solid;
+        border-width: 5px;
+        background-color: green;
+        margin-right: 5px;
+    }
+    .second-col{
+        margin-top: 10px;
+        display: flex;
+    }
+    .first-col{
+        margin-top: 10px;
+        display: flex;
+    }
+    .third-col{
+        margin-top: 10px;
+        display: flex;
+    }
+    .four-col{
+        margin-top: 10px;
+        display: flex;
+    }
+    .five-col{
+        margin-top: 10px;
+        display: flex;
+    }
+    
+    .seat{
+        padding: 20px;
+        padding-top: 30px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: red;
+        height: 500px;
+        width: 400px;
+        margin: 100px;
+      
+    }
+    
+</style>
+<body>
+    <h2>Seat booking</h2>
+   
+<div class="seat">
+    <div class="first-col">
+        <div  id="one" onclick="fillBookingDetails(`one`,1)">1</div>
+        <div id="two" onclick="fillBookingDetails(`two`,2)">2</div>
+        <div id="three" onclick="fillBookingDetails('three',3)">3</div>
+        <div id="four" onclick="fillBookingDetails('four',4)">4</div>
+    </div>
+
+    <div class="second-col">
+        <div id="five" onclick="fillBookingDetails('five',5)">5</div>
+        <div id="six" onclick="fillBookingDetails('six',6)">6</div>
+        <div id="seven" onclick="fillBookingDetails('seven',7)">7</div>
+        <div id="eight" onclick="fillBookingDetails(`eight`,8)">8</div>
+    </div>
+
+    <div class="third-col">
+        <div id="nine" onclick="fillBookingDetails('nine',9)">9</div>
+        <div id="ten" onclick="fillBookingDetails('ten',10)">10</div>
+        <div id="eleven" onclick="fillBookingDetails('eleven',11)">11</div>
+        <div id="twelve" onclick="fillBookingDetails('twelve',12)">12</div>
+    </div>
+
+    <div class="four-col">
+        <div id="thirteen" onclick="fillBookingDetails('thirteen',13)">13</div>
+        <div id="fourteen" onclick="fillBookingDetails('fourteen',14)">14</div>
+        <div id="fifteen" onclick="fillBookingDetails('fifteen',15)">15</div>
+        <div id="sixteen" onclick="fillBookingDetails('sixteen',16)">16</div>
+ </div>
+    
+
+    <div class="five-col">
+        <div id="seventeen" onclick="fillBookingDetails('seventeen',17)">17</div>
+        <div id="eighteen" onclick="fillBookingDetails('eighteen',18)">18</div>
+        <div id="nineteen" onclick="fillBookingDetails('nineteen',19)">19</div>
+        <div id="twenty" onclick="fillBookingDetails('twenty',20)">20</div>
+        </div>
+    
+    </div>
+</div>
+   
+    
+
+    <div class="modal" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Booking for your seat</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div>
+                <p id="selecetedSeat"></p>
+
+            </div>
+            <div class="modal-body">
+            <form>
+                <table>
+           <tr><td>Name<td><input type="text" id="name"/></td></tr><br>
+           <tr><td>Phone no</td><td><input type="number" id="mbl"/></td></tr><br>
+                </table>
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="confirmBooking" data-bs-dismiss="modal">Book</button>
+              <button type="button" class="btn btn-primary"> Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      
+    <script>
+        function fillBookingDetails(seat,seatnumber){
+            const myModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+            myModal.show();
+
+            document.getElementById('selecetedSeat').innerHTML="your seat number is " + seatnumber;
+            document.getElementById('name').value='';
+            document.getElementById('mbl').value=''
+            //document.querySelector('#confirmBooking').setAttribute('onclick', `bookSeats('${seat}')`); 
+
+            const confirmBtn = document.querySelector('#confirmBooking');
+            confirmBtn.addEventListener('click', function(){
+                
+                let name=document.getElementById('name').value;
+                let mbl=document.getElementById('mbl').value;
+
+               if((name != null || name != "" ) && (mbl.length==10)  ){
+                    bookSeats(seat);
+               } else{
+                alert("enter valid entries")
+                myModal.show();
+               }
+               
+         });
+
+        } 
+
+        function bookSeats(seat){
+            document.getElementById(seat).style.backgroundColor="red";
+
+        }
+
+
+
+       
+
+    </script>
+
+    
+   
+      
+
+</body>
+</html>

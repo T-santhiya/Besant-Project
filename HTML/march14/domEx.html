@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Ex</title>
+</head>
+<body>
+    <div>
+        DOM Example
+
+        <div>
+            <input type="text" id="user" name="user" placeholder="Username"/><br>
+            <input type="text" id="pswd" name="pswd" placeholder="Password"/><br>
+            <input type="button" value="Login" onclick="checkLogin()"/>
+            <p id="lgMsg">Please do login</p>
+            
+        </div>
+
+        <script>
+            function checkLogin(){
+
+                let user = document.getElementById('user').value;
+                let pswd = document.getElementById('pswd').value;
+
+                console.log(user, pswd);
+
+                document.getElementById('user').value = "Pranav";
+
+                document.getElementById('lgMsg').innerHTML = "Login success";
+                document.getElementById('lgMsg').style.backgroundColor = "green";
+                document.getElementById('lgMsg').className = "decor";
+                
+
+            }
+        </script>
+        <style>
+            .decor{
+                border: solid 2px red;
+                font-size: 100px;
+            }
+        </style>
+    </div>
+</body>
+</html>

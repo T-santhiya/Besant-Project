@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Example</title>
+</head>
+<body>
+    
+    <h2>Switch Example</h2>
+    <input type="text" id="grade" name="grade" onkeyup="getMarkByGrade()"/>
+    <p id="gradeOp"></p>
+
+    <div>
+        <select id="pName" name="pName" onchange="getProductPrice()">
+            <option>--Select--</option>
+            <option value="rice1001">BR Rice</option>
+            <option value="rice1002">RR Rice</option>
+            <option value="oil1001">Palm Oil</option>
+            <option value="oil1002">Sunflower Oil</option>
+            <option value="choco1001">Choco</option>
+            <option value="cookie1001">Cookies</option>
+            <option value="paste1001">Paste</option>
+        </select>
+        <p id="pResult"></p>
+    </div>
+    <script>
+
+        function getProductPrice(){
+            let pName = document.getElementById('pName').value;
+            let pResult = "";
+
+            switch(pName){
+                case "rice1001":
+                    pResult = "Rice : Rs.100";
+                    break;
+                case "rice1002":
+                    pResult = "Rice : Rs.200";
+                    break;
+                case "oil1001":
+                    pResult = "Oil : Rs.150";
+                    break;
+                case "oil1002":
+                    pResult = "Oil : Rs.350";
+                    break;
+                case "choco1001":
+                    pResult = "Choco : Rs.50";
+                    break;
+                case "cookie1001":
+                    pResult = "Cookies : Rs.10";
+                    break;
+                case "paste1001":
+                    pResult = "Paste : Rs.20";
+                    break;
+                default:
+                    pResult = "Please select an product";
+            }
+            document.getElementById('pResult').innerHTML = pResult;
+        }
+
+        function getMarkByGrade(){
+
+            let grade = document.getElementById('grade').value;
+            let result = "";
+
+            switch(grade){
+                case "A":
+                    result = "91 - 100";
+                    console.log("91-100");
+                    break;
+                case "B":
+                    result = "81 - 90";
+                    console.log("81-90");
+                    break;
+                case "C":
+                    result = "71 - 80";
+                    console.log("71-80");
+                    break;
+                case "D":
+                    result = "61 - 70";
+                    console.log("61-70");
+                    break;
+                case "E": 
+                    result = "51 - 60";
+                    console.log("51-60");
+                    break;
+                default: 
+                    result = "Below 50";
+                    console.log("Below 50");
+            }document.getElementById('gradeOp').innerHTML = result;
+
+            
+        }
+ 
+ 
+ </script>
+</body>
+</html>

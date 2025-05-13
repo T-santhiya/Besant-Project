@@ -52,25 +52,54 @@
 
     <form action="#" method="get">
         <table>
-            <tr><td>First name</td><td><input type="text" id="username"  name="username"/></td></tr>
-            <tr><td>Last name</td><td><input type="text" id="username"  name="username"/></td></tr>
-            <tr><td>Date of birth</td><td><input type="date" id type="dob" name="date of birth"/></td></tr>
+            <tr><td>First name</td><td><input type="text" id="firstname"  name="username"/></td></tr>
+            <tr><td>Last name</td><td><input type="text" id="lastname"  name="username"/></td></tr>
+            <tr><td>Date of birth</td><td><input type="date" id="dob" name="date of birth"/></td></tr>
             <tr><td>Email</td><td><input type="mail" id="mail" name="email"/></td></tr>
-            <tr><td>Mobile no</td><td><input type="number" id="mobile no" name="phone no"/></td></tr>
+            <tr><td>Mobile no</td><td><input type="number" id="mobile-no" name="phone no"/></td></tr>
             <tr><td>Address</td>
-                <td><textarea>
+                <td><textarea id="address">
 
                 </textarea></td>
             
             </tr>
             <tr><td>User name</td><td><input type="text" id="username" name="user name"/></td></tr>
-            <tr><td>Password</td><td><input type="password" id="username" name="pswd"/></td></tr>
-            <tr><td>Conform password</td><td><input type="password" id="password" name="password"/></td></tr>
+            <tr><td>Password</td><td><input type="password" id="password" name="pswd"/></td></tr>
+            <tr><td>Conform password</td><td><input type="password" id="conform-password" name="password"/></td></tr>
             
     </table>
     </form>
-            <button><a href="../projects/login.html">Register</a></button>
+            <button><a href="../projects/login.html" onclick="print()">Register</a></button>
             <button>Reset</button>
+
+            <script>
+               function print(){
+            var uname= document.getElementById('firstname').value;
+            var last= document.getElementById('lastname').value;
+            var date= document.getElementById('dob').value;
+            var mail= document.getElementById('mail').value;
+            var mbl= document.getElementById('mobile-no').value;
+            var add= document.getElementById('address').value;
+            var username= document.getElementById('username').value;
+            var pswd= document.getElementById('password').value;
+            var cpswd= document.getElementById('conform-password').value;
+
+            console.log(uname);
+            console.log(last);
+            console.log(date);
+            console.log(mail);
+            console.log(mbl);
+            console.log(add);
+            console.log(username);
+            console.log(pswd);
+            console.log(cpswd);
+
+            alert("USERNAME : "+ uname+ "\n"+ "LAST NAME : " +last + "\n"+ "DATE OF BIRTH : "+date + "\n"+ "EMAIL : "+mail + "\n" +"MOBILE NO : "+mbl+"\n" +"ADDRESS :" +add+"\n"+"USERNAME :"+username+"\n"+ "PASSWORD :" +pswd+"\n"+ "CONFORM PASSWORD :" +cpswd+"\n");
+            // console.log(print);
+
+               }
+            </script>
             
+
 </body>
 </html>

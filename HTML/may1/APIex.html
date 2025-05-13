@@ -1,0 +1,71 @@
+[10:16 am, 30/4/2025] Pranav Cls: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Create Account</h2>
+
+        <div class="row mt-4">
+            <div class="col">Account Name</div>
+   …
+[10:18 am, 30/4/2025] Pranav Cls: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Admin Panel</h2>
+        <div class="row mt-4">
+            <div class="col">Acc No</div>
+            <div class="col">Acc Name</div>
+            <div class="col">Acc Balance</div>
+        </div>
+        <div id="responseData"></div>
+    </div>
+    <script>
+        var accountDetails = [];
+        function getAccDetails(){
+
+            let apiUrl = "https://retoolapi.dev/Zx2PVw/BankAcc";
+            fetch(apiUrl)
+            .then(response => {
+                if(response.ok){
+                    return response.json();
+                }
+            })
+            .then(responseData => {
+                accountDetails = responseData;
+                displayAccDetails();
+            })
+        }
+        getAccDetails();
+        
+        function displayAccDetails(){
+
+            let result = "";
+            for(let acc of accountDetails){
+                result += '<div class="row mt-4">' +
+                                '<div class="col">' + acc.accId +'</div>' +
+                                '<div class="col">' + acc.accName +'</div>' +
+                                '<div class="col">' + acc.balance +'</div>' +
+                          '</div>';
+            }
+            document.getElementById('responseData').innerHTML = result;
+        }
+    </script>
+    
+</body>
+</html>

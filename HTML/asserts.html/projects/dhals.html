@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dal Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .dal {
+      background-color: cornflowerblue;
+      width: 150px;
+      margin: 20px;
+      padding: 10px;
+      color: white;
+      border-radius: 5px;
+    }
+    .rating, .a {
+      display: flex;
+      align-items: center;
+    }
+    .inner-rating {
+      background-color: #70d67c;
+      padding: 0 8px;
+      border-radius: 4px;
+      color: white;
+    }
+    .confirmation {
+      background-color: #d4edda;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="dal">
+    <h1>Dal Shop</h1>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row" id="product-list">
+      <!-- Product Cards Inserted by JS -->
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <h2>Your Cart</h2>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Weight</th>
+          <th>Price (₹)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- Cart Items via JS -->
+      </tbody>
+    </table>
+    <h4 id="total">Total: ₹0</h4>
+
+    <div class="mt-4">
+      <h5>Enter Your Address:</h5>
+      <textarea id="address" class="form-control" rows="3" placeholder="123, Street Name, City, Pincode"></textarea>
+      <button class="btn btn-success mt-3" onclick="pay()">Click to Pay</button>
+    </div>
+
+    <div class="confirmation mt-4" id="confirmation-box">
+      <h5>✅ Your order is confirmed!</h5>
+      <p><strong>Delivery Address:</strong> <span id="confirmed-address"></span></p>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+      { name: 'Kadalai paruppu', weight: '1 kg', price: 115, original: 130, rating: 4.2, reviews: 354, img: 'asserts/dhals/kadalai parupu.jpg' },
+      { name: 'Masoor dal', weight: '1 kg', price: 79, original: 95, rating: 4.1, reviews: 315, img: 'asserts/dhals/masoor dal.jpg' },
+      { name: 'Mochai', weight: '500 g', price: 80, original: 98, rating: 4.0, reviews: 367, img: 'asserts/dhals/mochchai.jpg' },
+      { name: 'Moong dal', weight: '500 g', price: 73, original: 91, rating: 4.1, reviews: 258, img: 'asserts/dhals/moong dhal.jpg' },
+      { name: 'Pachai payaru', weight: '1 kg', price: 65, original: 82, rating: 4.5, reviews: 478, img: 'asserts/dhals/pachai payaru.jpg' },
+      { name: 'Rajma', weight: '500 g', price: 79, original: 95, rating: 4.3, reviews: 384, img: 'asserts/dhals/rajma.jpg' },
+      { name: 'Sundal', weight: '500 g', price: 62, original: 75, rating: 4.2, reviews: 341, img: 'asserts/dhals/sundal.jpg' },
+      { name: 'Toor dal', weight: '500 g', price: 80, original: 100, rating: 4.4, reviews: 359, img: 'asserts/dhals/thuvaram parupu.jpg' },
+      { name: 'Ulunthu', weight: '500 g', price: 68, original: 85, rating: 4.2, reviews: 450, img: 'asserts/dhals/ulunthu.jpg' },
+    ];
+
+    const container = document.getElementById('product-list');
+    const cartBody = document.getElementById('cart-items');
+    const totalDisplay = document.getElementById('total');
+    const confirmationBox = document.getElementById('confirmation-box');
+    const confirmedAddress = document.getElementById('confirmed-address');
+    const addressField = document.getElementById('address');
+
+    let cart = [];
+
+    function renderProducts() {
+      products.forEach((p, i) => {
+        container.innerHTML += `
+          <div class="col-md-4 mb-4">
+            <div class="card" style="width: 18rem;">
+              <img src="${p.img}" class="card-img-top" alt="${p.name}" style="height: 200px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${p.name}</h5>
+                <h6>${p.weight}</h6>
+                <div class="rating mb-1">
+                  <div class="inner-rating">
+                    <i class="bi bi-star"></i> ${p.rating}
+                  </div>
+                  <div class="ms-2">(${p.reviews})</div>
+                </div>
+                <div class="a mb-2">
+                  <del>₹${p.original}</del>&nbsp;<h6 class="ms-2 mb-0">₹${p.price}</h6>
+                </div>
+                <button class="btn btn-warning" onclick="addToCart(${i})">Add to cart</button>
+              </div>
+            </div>
+          </div>`;
+      });
+    }
+
+    function addToCart(index) {
+      cart.push(products[index]);
+      updateCartDisplay();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartDisplay();
+      alert("Product removed from cart.");
+    }
+
+    function updateCartDisplay() {
+      cartBody.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.weight}</td>
+          <td>₹${item.price}</td>
+          <td><button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Remove</button></td>
+        `;
+        cartBody.appendChild(row);
+        total += item.price;
+      });
+
+      totalDisplay.innerText = `Total: ₹${total}`;
+    }
+
+    function pay() {
+      const address = addressField.value.trim();
+      if (cart.length === 0) {
+        alert("Please add at least one product to the cart.");
+        return;
+      }
+      if (address === "") {
+        alert("Please enter your delivery address.");
+        return;
+      }
+
+      alert("✅ Your cart is confirmed!\nDelivery Address: " + address);
+
+      cart = [];  // Clear the cart
+      addressField.value = ""; // Reset the address field
+      updateCartDisplay(); 
+
+
+     
+
+    //   confirmedAddress.innerText = address;
+    //   confirmationBox.style.display = 'block';
+    }
+
+    // Initial render
+    renderProducts();
+
+   
+  </script>
+</body>
+</html>

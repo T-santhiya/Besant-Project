@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARRAY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <h2>Array emaxples</h2>
+    <p id="arrOutput"></p>
+
+    <script>
+
+        let arr = [10,20,30,40,20,70];
+
+        function push(arr, ele){
+
+            console.log("Before Push : " + arr);
+            arr[ arr.length ] = ele;
+            console.log("After Push : " + arr);
+            return arr.length;
+        }
+        console.log(push(arr, 60));
+
+        function pop(arr){
+
+            console.log("Before Pop : "+ arr);
+            let removedEle = arr[arr.length-1];
+            arr.length = arr.length-1;
+            console.log("After Pop : "+ arr);
+            return removedEle;
+        }
+
+        console.log(pop(arr));
+
+        
+        function indexOf(arr, srEle){
+            console.log("Arr Index Of: "+ arr);
+            for(let idx=0; idx < arr.length; idx++){
+                if(arr[idx] == srEle){
+                    return idx;
+                }
+            }
+            return -1;
+        }
+
+        console.log(indexOf(arr, 20));
+        console.log(indexOf(arr, 200));
+
+        function lastIndexOf(arr, srEle){
+            console.log("Arr Last Index Of: "+ arr);
+            for(let idx=arr.length-1; idx >= 0; idx--){
+                if(arr[idx] == srEle){
+                    return idx;
+                }
+            }
+            return -1;
+        }
+        console.log(lastIndexOf(arr, 20));
+        console.log(lastIndexOf(arr, 200));
+
+
+
+        function reverse(arr){
+            console.log("Arr Before Reverse : "+ arr);
+            let newArr = [];
+            for(let idx=arr.length-1; idx >= 0; idx--){
+                console.log(arr[idx]);
+                newArr[ newArr.length ] = arr[idx];
+            }
+            console.log(newArr);
+            arr = newArr;
+            console.log("Arr After Reverse : "+ arr);
+        }
+        reverse(arr);
+
+        function unshift(arr, ele){
+            console.log("Before unshift : " + arr);
+            for(i=arr.length; i>0; i-- ) {
+                arr[i]=arr[i -1];
+                arr[0]=ele;
+                console.log("After unshift : " + arr);
+            return arr.length;
+                 
+            }
+            }
+            console.log(unshift(arr, 5));
+
+            function shift(arr){
+                console.log("before shift:"+ arr); 
+                let removednum=arr[arr.length-1];
+                arr.length=arr.length-1;   
+                console.log("after shift:"+ arr);
+                return removednum;
+
+            }
+            console.log(shift(arr));
+
+            function sort(arr,ele){
+                console.log(" arr before sort :"+ arr);
+                arr.sort((a,b)=>a-b);
+                console.log(" arr after sort :"+ arr);
+                return arr;
+                
+            }
+            console.log(sort(arr));
+
+        
+
+        function arrExam(){
+            let fruits=["apple","mango","banana","papaya","orange","papaya"];
+           
+
+            let arrOutput ="";
+
+
+            console.log(fruits.length);
+
+        
+
+            console.log(fruits);
+                arrOutput += "Array : " + fruits + "<br>";
+                arrOutput += "Length : " + fruits.length + "<br>";
+                arrOutput += "push guva : " + fruits.push("guva") + "<br>";
+                arrOutput += "pop : " + fruits.pop() + "<br>";
+                arrOutput += "unshift pinneapple : " + fruits.unshift("pinneapple") + "<br>";
+                arrOutput += "shift : " + fruits.shift() + "<br>";
+                arrOutput += "Array : " + fruits + "<br>";
+                arrOutput += "includes apple : " + fruits.includes("apple") + "<br>";
+                arrOutput += "includes maathulai : " + fruits.includes("maathulai") + "<br>";
+                arrOutput += "reverse : " + fruits.reverse() + "<br>";
+                arrOutput += "sort : " + fruits.sort() + "<br>";
+                arrOutput += "Array : " + fruits + "<br>";
+                arrOutput += "to String : " + fruits.toString() + "<br>";
+                console.log("To string:" + fruits.toString())+"<br>";
+                arrOutput += "index of banana : " + fruits.indexOf("banana") + "<br>";
+                arrOutput += "index of grapes : " + fruits.indexOf("grapes") + "<br>";
+                arrOutput += " lastindex of papaya : " + fruits.lastIndexOf("papaya") + "<br>";
+                arrOutput += "join by * : " + fruits.join("*") + "<br>";
+                arrOutput += "join by / : " + fruits.join("/") + "<br>";
+                arrOutput += "concat santhiya seethala : " + fruits.concat("santhiya","seethala") + "<br>";
+                arrOutput += "slice 2 4 : " + fruits.slice(2 ,4) + "<br>";
+                arrOutput += " fill  : " + fruits.fill("&",2,4) + "<br>";
+                arrOutput += "Array : " + fruits + "<br>";
+                
+            document.getElementById('arrOutput').innerHTML=arrOutput;
+        }
+        arrExam();
+
+    </script>
+    
+</body>
+</html>

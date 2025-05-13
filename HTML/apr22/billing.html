@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class="container mt-4">
+
+        <h2>Billing</h2>
+        <div class="row mt-4">
+            <div class="col">ProductId</div>
+            <div class="col">ProductName</div>
+            <div class="col">Price</div>
+            <div class="col">Count</div>
+            <div class="col">Total</div>
+            <div class="col">Action</div>
+        </div>
+        <div class="row mt-4">
+            <div class="col"> <input type="text" id="pId" name="pId" class="form-control"/></div>
+            <div class="col"> 
+                <!-- <input type="text" id="pName" name="pName" class="form-control"/> -->
+                <!-- <select class="form-select" id="pName" name="pName">
+                    <option>Rice</option>
+                    <option>Oil</option>
+                    <option>Ice</option>
+                    <option>Cake</option>
+                    <option>Milk</option>
+                </select> -->
+                <div id="productNames"></div>
+            </div>
+            <div class="col"> <input type="text" id="pPrice" name="pPrice" class="form-control" onkeyup="calcTotal()"/></div>
+            <div class="col"> <input type="text" id="pCount" name="pCount" class="form-control" onkeyup="calcTotal()"/></div>
+            <div class="col"> <input type="text" id="pTotal" name="pTotal" class="form-control" readonly/></div>
+            <div class="col" id="addProductBtn"> <button type="button" class="btn btn-success" onclick="addProduct()">Add Product</button></div>
+            <div class="col" style="display:none;" id="updateProductBtn"> <button type="button" class="btn btn-warning" onclick="updateProduct()">Update Product</button></div>
+        </div>
+        <!-- <div class="row mt-4">
+            <div class="col">1001</div>
+            <div class="col">Ice</div>
+            <div class="col">60</div>
+            <div class="col">2</div>
+            <div class="col">120</div>
+            <div class="col"><button type="button" class="btn btn-warning">Update</button></div>
+        </div> -->
+        <div id="cartData">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+        </div>
+
+    </div>
+    <script>
+
+        var products = [{pId:1001,pName:"Rice"}, {pId:1002,pName:"Milk"}, {pId:1003,pName:"Curd"}, {pId:1004,pName:"Choco"}, {pId:1005,pName:"Cookie"},
+                        {pId:1006,pName:"Pepper"}, {pId:1007,pName:"Ice"}, {pId:1008,pName:"StickIce"}, {pId:1009,pName:"Juice"}, {pId:1010,pName:"Milkshake"}
+        ]
+        var cartData=[];
+        var apiUrl = "https://retoolapi.dev/6Z2MWv/productsCart";
+        var pId = "";
+        var pName = "";
+        var pPrice = "";
+        var pCount = "";
+        var pTotal = "";
+        var productIdOfUpdate ="";
+        var addProductBtn= "";
+        var updateProductBtn = "";
+
+        function getCartData(){            
+            fetch(apiUrl)
+            .then(response => { 
+                console.log(response);
+                return response.json();
+            })
+            .then(responseData => {
+                console.log(responseData);
+                cartData = responseData;
+                displayCartData();
+            })
+        }
+        getCartData();
+
+        function displayCartData(){
+
+            let result = "";
+            for(let product of cartData){
+                result += '<div class="row mt-4">' +
+                                '<div class="col">' + product.pId + '</div>' +
+                                '<div class="col">' + product.pName + '</div>' +
+                                '<div class="col">' + product.pPrice + '</div>' +
+                                '<div class="col">' + product.pCount + '</div>' +
+                                '<div class="col">' + product.pTotal + '</div>' +
+                                '<div class="col">' +
+                                    ' <button type="button" class="btn btn-warning" onClick="getRecordForUpdate('+ product.id +')"> Update</button> ' +
+                                    ' <button type="button" class="btn btn-danger" onClick="deleteProduct(' + product.id +')"> Delete</button> ' +
+                                '</div>' +
+                          '</div>';
+            }
+            document.getElementById('cartData').innerHTML= result;
+        }
+
+        function getInputs(){
+            pId = document.getElementById('pId');
+            pName = document.getElementById('pName');
+            pPrice = document.getElementById('pPrice');
+            pCount = document.getElementById('pCount');
+            pTotal = document.getElementById('pTotal');
+            addProductBtn = document.getElementById('addProductBtn');
+            updateProductBtn = document.getElementById('updateProductBtn');
+        }
+
+        function addProduct(){          
+
+            getInputs();
+            let requestBody = {
+                pId : pId.value,
+                pName : pName.value,
+                pPrice : pPrice.value,
+                pCount : pCount.value,
+                pTotal : pTotal.value
+            }
+            let request = {
+                method : "POST",
+                headers : { "Content-Type": "application/json"},
+                body : JSON.stringify(requestBody)
+            }
+
+            fetch(apiUrl, request)
+            .then(response => { return response.json();})
+            .then(responseData => {
+                console.log(responseData);
+                clearInput();
+                getCartData();
+            })
+
+        }
+
+        function clearInput(){
+
+            pId.value = "";
+            pName.value = "";
+            pPrice.value = "";
+            pCount.value = "";
+            pTotal.value = "";
+            productIdOfUpdate = "";
+
+            // document.getElementById('pId').value = "";
+            // document.getElementById('pName').value = "";
+            // document.getElementById('pPrice').value = "";
+            // document.getElementById('pCount').value = "";
+            // document.getElementById('pTotal').value = "";
+        }
+
+        function deleteProduct(productId){
+
+            console.log(productId);
+            let request = {
+                method : "DELETE"
+            }
+            fetch(apiUrl+ "/" + productId, request)
+            .then(response => {
+                if(response.ok){
+                    alert("Product Deleted successfully...");
+                    getCartData();
+                }
+            })
+            
+        }
+
+        function calcTotal(){
+            getInputs();
+            pTotal.value = Number(pPrice.value) * Number(pCount.value);
+        }
+
+        function generateProductsDropDown(){
+
+            let result = '<select class="form-select" id="pName" name="pName">';
+            
+            for(let product of products){
+                console.log(product);
+                result += '<option>' + product.pName + '</option>';
+            }
+
+            result += "</select>";
+            document.getElementById('productNames').innerHTML = result;
+        }
+        generateProductsDropDown();
+
+        function getRecordForUpdate(productId){
+
+            getInputs();
+            let filteredProduct = cartData.filter(product => { return product.id == productId})[0];
+            console.log(filteredProduct);
+            pId.value = filteredProduct.pId;
+            pName.value = filteredProduct.pName;
+            pPrice.value = filteredProduct.pPrice;
+            pCount.value = filteredProduct.pCount;
+            pTotal.value = filteredProduct.pTotal;
+            productIdOfUpdate = productId;
+            updateProductBtn.style.display = "block";
+            addProductBtn.style.display = "none";
+
+        }
+
+        function updateProduct(){
+
+            getInputs();
+            let requestBody = {
+                pId : pId.value,
+                pName : pName.value,
+                pPrice : pPrice.value,
+                pCount : pCount.value,
+                pTotal : pTotal.value,
+                id:productIdOfUpdate
+            }
+            let request = {
+                method : "PUT",
+                headers : { "Content-Type": "application/json"},
+                body : JSON.stringify(requestBody)
+            }
+
+            fetch(apiUrl +"/"+ productIdOfUpdate , request)
+            .then(response => { return response.json();})
+            .then(responseData => {
+                console.log(responseData);
+                clearInput();
+                getCartData();
+                addProductBtn.style.display = "block";
+                updateProductBtn.style.display = "none";
+            })
+
+
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,281 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-     <style>
-        .inner-rating{
-          background-color:#70d67c;
-          width: 20%;
-          
-        }
-        .a{
-          display: flex;
-         padding-left: 5px;
-        }
-        .rating{
-          display: flex;
-        }
-        .dairy{
-          color: crimson;
-          width: 150px;
-          margin-left: 20px;
-          margin-top: 30px;
-        }
-        .button{
-          margin-left: 1400px;
-          
-        }
-  
-        
-       </style>
-
+  <meta charset="UTF-8" />
+  <title>Dairy Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+    }
+    .section-title {
+      color: crimson;
+    }
+    .cart-btn {
+      float: right;
+    }
+    .inner-rating {
+      background-color: #70d67c;
+      padding: 4px 8px;
+      border-radius: 5px;
+      color: white;
+    }
+    #cart-section {
+      margin-top: 40px;
+    }
+    .cart-item {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-item img {
+      height: 60px;
+      width: 60px;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="dairy">  
-        <h1>Dairy products</h1>
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="section-title">Dairy Products</h2>
+    <button class="btn btn-warning cart-btn" onclick="scrollToCart()">Your Cart</button>
+  </div>
+
+  <div class="row mt-4" id="product-list"></div>
+
+  <div id="cart-section" class="mt-5">
+    <h3>Your Cart</h3>
+    <div id="cart-details" class="border p-3" style="display:none;">
+      <div id="cart-items"></div>
+      <div class="mt-2"><strong>Total: ₹<span id="total-amount">0</span></strong></div>
+      <div class="mt-3">
+        <label for="address">Delivery Address:</label>
+        <textarea id="address" class="form-control" rows="3" placeholder="Enter your address"></textarea>
       </div>
-    
-      <div class="button">
-        <button type="button" class="btn btn-warning">Your cart</button>
+      <div class="mt-3">
+        <button class="btn btn-success" onclick="payNow()">Pay</button>
       </div>
-    
-    
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="../projects/asserts/dairy products/milk.jpg" class="card-img-top" alt="Apple"
-                        style="height: 200px;">
-                        <div class="card-body">
-                          <h5 class="card-title">Milk</h5>
-                          <h5>500 ml</h5>
-                          <div class="rating">
-                            <div class="inner-rating">
-                              <strong><i class="bi bi-star"></i>&nbsp;4.7</strong>  
-                            </div>
-                            <div>
-                            &nbsp;(1248)
-                            </div>
-                          </div>
-                          <div class="a">
-                        <del>₹32</del>&nbsp;<h6>₹24</h6><br>
-                         </div>
-                         <div>
-                          <a href="#" class="btn btn-warning">Add to cart</a>     
-                         </div>       
-                        </div>
-                </div>
-             </div>
-    
-    
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-                    <img src="../projects/asserts/dairy products/curd.jpg" class="card-img-top" alt="Apple"
-                    style="height: 200px;">
-                  <div class="card-body">
-                          <h5 class="card-title">Curd</h5>
-                          <h5>500 ml</h5>
-                      <div class="rating">
-                      <div class="inner-rating">
-                        <strong><i class="bi bi-star"></i>&nbsp;4.6</strong>  
-                      </div>
-                      <div>
-                      &nbsp;(1847)
-                      </div>
-                    </div>
-                    <div class="a">
-                  <del>₹44</del>&nbsp;<h6>₹35</h6><br>
-                   </div>
-                    <a href="#" class="btn btn-warning">Add to cart</a>             
-                  </div>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+      { name: "Milk", qty: "500 ml", price: 24, original: 32, img: "milk.jpg", rating: 4.7 },
+      { name: "Curd", qty: "500 ml", price: 35, original: 44, img: "curd.jpg", rating: 4.6 },
+      { name: "Butter milk", qty: "500 ml", price: 63, original: 75, img: "butter milk.jpg", rating: 4.5 },
+      { name: "Butter", qty: "100 g", price: 70, original: 95, img: "butter.jpg", rating: 4.4 },
+      { name: "Cheese", qty: "200 g", price: 145, original: 164, img: "cheese.jpg", rating: 4.5 },
+      { name: "Ghee", qty: "500 ml", price: 416, original: 450, img: "ghee.jpg", rating: 4.7 },
+      { name: "Paneer", qty: "200 g", price: 128, original: 148, img: "paneer.jpg", rating: 4.5 },
+      { name: "Whipped cream", qty: "100 g", price: 113, original: 148, img: "whipped cream.jpg", rating: 4.4 },
+      { name: "Yogurt", qty: "100 g", price: 35, original: 46, img: "yogourt.jpg", rating: 4.2 }
+    ];
+
+    let cart = [];
+
+    function renderProducts() {
+      const productList = document.getElementById('product-list');
+      products.forEach((product, index) => {
+        const col = document.createElement('div');
+        col.className = "col-md-4 mb-4";
+        col.innerHTML = `
+          <div class="card">
+            <img src="../projects/asserts/dairy products/${product.img}" class="card-img-top" style="height: 200px;" alt="${product.name}">
+            <div class="card-body">
+              <h5 class="card-title">${product.name}</h5>
+              <h6>${product.qty}</h6>
+              <div class="d-flex align-items-center mb-2">
+                <div class="inner-rating"><i class="bi bi-star"></i> ${product.rating}</div>
+                <div class="ms-2">(reviews)</div>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <del>₹${product.original}</del>
+                <h6 class="mb-0 text-success">₹${product.price}</h6>
+              </div>
+              <button class="btn btn-warning mt-2" onclick="addToCart(${index})">Add to cart</button>
+            </div>
           </div>
-       </div>
-    
-       <div class="col">
-        <div class="card" style="width: 18rem;">
-                <img src="../projects/asserts/dairy products/butter milk.jpg" class="card-img-top" alt="Apple"
-                style="height: 200px;">
-              <div class="card-body">
-                      <h5 class="card-title">Butter milk</h5>
-                      <h5>500 ml</h5>
-                  <div class="rating">
-                  <div class="inner-rating">
-                    <strong><i class="bi bi-star"></i>&nbsp;4.5</strong>  
-                  </div>
-                  <div>
-                  &nbsp;(987)
-                  </div>
-                </div>
-                <div class="a">
-              <del>₹75</del>&nbsp;<h6>₹63</h6><br>
-               </div>
-                <a href="#" class="btn btn-warning">Add to cart</a>             
+        `;
+        productList.appendChild(col);
+      });
+    }
+
+    function addToCart(index) {
+      const product = products[index];
+      const existing = cart.find(item => item.name === product.name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      updateCart();
+    }
+
+    function removeFromCart(name) {
+      cart = cart.filter(item => item.name !== name);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartDetails = document.getElementById('cart-details');
+      const cartItems = document.getElementById('cart-items');
+      const totalAmount = document.getElementById('total-amount');
+      cartItems.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartDetails.style.display = 'none';
+        totalAmount.textContent = '0';
+        return;
+      }
+
+      cartDetails.style.display = 'block';
+      let total = 0;
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        cartItems.innerHTML += `
+          <div class="cart-item">
+            <div class="d-flex gap-3 align-items-center">
+              <img src="../projects/asserts/dairy products/${item.img}" />
+              <div>
+                <strong>${item.name}</strong><br/>
+                <small>Qty: ${item.qty} × ${item.quantity}</small><br/>
+                <small>Price: ₹${item.price} each</small><br/>
+                <small>Total: ₹${itemTotal}</small>
               </div>
-      </div>
-    </div>
-    
-    
-    <div class="row mt-4">
-      <div class="col mt-3">
-          <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/dairy products/butter.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-              <div class="card-body">
-                <h5 class="card-title">Butter</h5>
-                <h5>100 g</h5>
-                <div class="rating">
-                  <div class="inner-rating">
-                    <strong><i class="bi bi-star"></i>&nbsp;4.4</strong>  
-                  </div>
-                  <div>
-                  &nbsp;(1638)
-                  </div>
-                </div>
-                <div class="a">
-              <del>₹95</del>&nbsp;<h6>₹70</h6><br>
-               </div>
-                <a href="#" class="btn btn-warning">Add to cart</a>             
-              </div>
-      </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/dairy products/cheese.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">Cheese</h5>
-                    <h5>200 g</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.5</strong>  
-                </div>
-                <div>
-                &nbsp;(1789)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹164</del>&nbsp;<h6>₹145</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
             </div>
-    </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/dairy products/ghee.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">Ghee</h5>
-                    <h5>500 ml</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.7</strong>  
-                </div>
-                <div>
-                &nbsp;(2014)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹450</del>&nbsp;<h6>₹416</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
-    
-    
-    
-    <div class="row mt-4">
-      <div class="col mt-3">
-          <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/dairy products/paneer.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-              <div class="card-body">
-                <h5 class="card-title">Paneer</h5>
-                <h5>200 g</h5>
-                <div class="rating">
-                  <div class="inner-rating">
-                    <strong><i class="bi bi-star"></i>&nbsp;4.5</strong>  
-                  </div>
-                  <div>
-                  &nbsp;(1462)
-                  </div>
-                </div>
-                <div class="a">
-              <del>₹148</del>&nbsp;<h6>₹128</h6><br>
-               </div>
-                <a href="#" class="btn btn-warning">Add to cart</a>             
-              </div>
-      </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/dairy products/whipped cream.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">Whipped cream</h5>
-                    <h5>100 g</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.4</strong>  
-                </div>
-                <div>
-                &nbsp;(984)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹148</del>&nbsp;<h6>₹113</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/dairy products/yogourt.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">Yogurd</h5>
-                    <h5>100 g</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.2</strong>  
-                </div>
-                <div>
-                &nbsp;(845)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹46</del>&nbsp;<h6>₹35</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
-    
-    
-            </div>
-    
-          </div> 
-    
+            <button class="btn btn-danger btn-sm" onclick="removeFromCart('${item.name}')">Remove</button>
+          </div>
+        `;
+      });
+      totalAmount.textContent = total;
+    }
+
+    function scrollToCart() {
+      document.getElementById('cart-section').scrollIntoView({ behavior: "smooth" });
+    }
+
+    function payNow() {
+      const address = document.getElementById('address').value.trim();
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      if (!address) {
+        alert("Please enter a delivery address.");
+        return;
+      }
+      const orderSummary = cart.map(item => `${item.name} x${item.quantity}`).join(', ');
+      alert(`Order placed for: ${orderSummary}\nDelivery Address: ${address}`);
+      cart = [];
+      document.getElementById('address').value = '';
+      updateCart();
+    }
+
+    renderProducts();
+  </script>
 </body>
 </html>
+

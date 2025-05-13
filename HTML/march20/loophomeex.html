@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop Ex</title>
+</head>
+<body>
+    
+      <h2>loop exercise</h2>
+       start num : <input type="number" id="start" name="number"/>
+        end number : <input type="number" id="end" name="number"/>
+       <button onclick="loopex()">APPLY</button>
+
+
+        <div>
+       start num : <input type="number" id="startnum" name="number"/>
+       end number : <input type="number" id="endnum" name="number"/>
+       table number : <input type="number" id="tablenum" name="number"/>
+       <button onclick="printmultitable()">APPLY</button>
+
+    </div>
+    <script>
+       
+         function loopex(){
+            let startnbr =document.getElementById('start').value;
+            let endnbr =document.getElementById('end').value;
+       
+            for (let i=startnbr; i <=endnbr; i++){
+                console.log(i);
+            }
+                
+                
+            }
+       
+            
+        for (let i = 1; i <= 10; i++) {
+             console.log(`5 x ${i} = ${5 * i}`);
+            }
+            
+
+            function loopex(){
+            let startnbr =document.getElementById('start').value;
+            let endnbr =document.getElementById('end').value;
+       
+            for (let i=startnbr; i <=endnbr; i++){
+
+                console.log(i+i);
+            }
+                
+                
+            }
+
+            function printmultitable(){
+                let startnum=document.getElementById('startnum').value;
+                let endnum=document.getElementById('startnum').value;
+                let tablenum=document.getElementById('startnum').value;
+
+
+                for (number=startnum; num <=endnum ;num++)
+            {
+                console.log(tablenum+"*"+number+"="+(tablenum));
+            }
+
+           
+
+            }
+           
+       
+    </script>
+        
+
+</body>
+</html>

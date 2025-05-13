@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reg Exp</title>
+</head>
+<body>
+    <div>
+        <h2>Regular Expression</h2>
+
+        <script>
+            function regEx(){
+
+                let ptn = /San/i;
+                console.log(ptn.test("Santhosh"));
+                console.log(ptn.test("Sandro"));
+                console.log(ptn.test("Egasangam"));
+                console.log(ptn.exec("EgaSangam Sandro"));
+
+                let str = "Lenovo";
+                console.log(str.match("o"));
+
+                let ptrn = new RegExp("[az]");
+                console.log(ptrn.test("Hello"));
+                console.log(ptrn.test("0235"));
+                console.log(ptrn.test("56Hellao"));
+
+                let mobPtrn = /[6-9]+[0-9]{9}$/;
+                console.log("**** Mobile Pattern***")
+                console.log(mobPtrn.test("9256314586"));
+                console.log(mobPtrn.test("9256314586"));
+                console.log(mobPtrn.test("0256314586"));
+                console.log(mobPtrn.test("62563145586"));
+                console.log(mobPtrn.test("92563145"));
+                console.log(mobPtrn.test("9256sdf314586"));
+
+                let emailPtrn = /[a-z0-9]+@+[a-z]+[.]+[a-z]{2,3}$/;
+                console.log("**** Email Patterns****");
+                console.log(emailPtrn.test("dinesh@gmail.com"));
+                console.log(emailPtrn.test("dinesh01@gmail.com"));
+                console.log(emailPtrn.test("dineshgmail.com"));
+                console.log(emailPtrn.test("dinesh@gmailcom"));
+                console.log(emailPtrn.test("dinesh@gmail.c"));
+                console.log(emailPtrn.test("dinesh@gamil.comm"));
+            }
+
+            regEx();
+        </script>
+    </div>
+    
+</body>
+</html>

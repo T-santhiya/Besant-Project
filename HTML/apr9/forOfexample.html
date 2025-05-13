@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>forOf loop</h2>  
+    <script>
+//forOf
+        const names=["santhiya","sandy","santhosh","sumathi"]
+
+        for(const name of names){
+            console.log(name);
+        }
+
+        // const fruits=["apple","mango","orange","banana","apple2"]
+        // for(const fruit of fruits){
+        //     console.log(fruit);
+        // }
+
+
+//forEach
+        const colors=['red','yellow','pink','blue']
+        colors.forEach((color)=>{
+            console.log(color);
+        }
+    );
+//filter
+        // const animals=["cat","cow","tiger","lion","monkey"];
+
+        // const animalsWithC = animals.filter(animal => animal.startsWith('c'));
+        // console.log(animalsWithC);
+
+        const animals=["cat","cow","tiger","lion","monkey"];
+        const animallength = animals.filter(animal => animal.length >3);
+        console.log(animallength);
+
+        const fruits = ['apple', 'banana', 'kiwi', 'avocado'];
+
+            const fruitsWithA = fruits.filter(fruit => fruit.startsWith('a'));
+
+            console.log(fruitsWithA);
+
+//map
+
+        const numbers=[1,2,3,4,5,6,7];
+
+        const multipleNumbers=numbers.map(numbers=>numbers*2);
+        console.log( multipleNumbers);
+
+        const name=["santhiya","santhosh",'sumathi',"seethala"];
+        // const upperCase=name.map(name=>name.toUpperCase());
+        const concatName=name.map(name=>name.concat("8"));
+
+        console.log(concatName);
+
+//some
+
+        const color=["red","blue","green","yellow"];
+        const startWithS=color.some(color=>color.startsWith("s"));
+        console.log(startWithS);
+
+        const num=[2,4,8,6,9,11];
+        // const evenNumbers=num.some(num=>num%2==0);
+        const evenNumbers=num.every(num=>num%2==0);
+        console.log(evenNumbers);
+
+
+// settimeout
+
+        setTimeout(()=>{
+            console.log("print a value after 2 sec");
+        },3000
+    );
+
+        setTimeout(()=>{
+            alert("time's up");
+        },4000
+    );
+
+
+
+
+    </script>
+
+
+    
+</body>
+</html>

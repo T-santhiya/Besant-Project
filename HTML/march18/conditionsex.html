@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Check if a number is 18 or older</h2>
+    <input type="number" id="ageInput" placeholder="Enter your age">
+    <button onclick="checkAge()">Check</button>
+    <p id="result"></p>
+
+    <h2>Check if a number is not 100</h2>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <button onclick="checkNumber()">Check</button>
+    <p id="result"></p>
+
+    <script>
+        function checkAge() {
+            let age = document.getElementById("ageInput").value;
+            if (age >= 18) {
+                document.getElementById("result").innerText = "You are an adult.";
+            } else {
+                document.getElementById("result").innerText = "You are not an adult.";
+            }
+        }
+
+        
+
+        function checkNumber() {
+            let num = document.getElementById("numberInput").value;
+            if (num != 100) {
+                document.getElementById("result").innerText = "The number is NOT 100.";
+            } else {
+                document.getElementById("result").innerText = "The number is 100.";
+            }
+        }
+    </script>
+    
+</body>
+</html>

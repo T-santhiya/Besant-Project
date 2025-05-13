@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Example</title>
+</head>
+<body>
+
+    <div>
+        <h2>String Functions</h2>
+
+        <p id="strOp"></p>
+    </div>
+    <script>
+        function strEx(){
+
+            let result = "";
+            let str = "Hi Hello How are you";
+
+            result += "Str : " + str + "<br>";
+            result += "Length : " + str.length + "<br>";
+            result += "IndexOf O : " + str.indexOf("o") + "<br>";
+            result += "LastIndexOf O : " + str.lastIndexOf("o") + "<br>";
+            result += "StartsWith Hi : " + str.startsWith("Hi") + "<br>";
+            result += "StartsWith Hello : " + str.startsWith("Hello") + "<br>";
+            result += "EndsWith you : " + str.endsWith("you") + "<br>";
+            result += "EndsWith ? : " + str.endsWith("?") + "<br>";
+            result += "Repeat 3 : " + str.repeat(3) + "<br>";
+            result += "Replace Hello -> Guys : " + str.replace("Hello", "Guys") + "<br>";
+            result += "Concat Vanakam Chennai : " + str.concat(" Vanakam Chennai") + "<br>";
+            result += "Str : " + str + "<br>";
+            result += "CharAt 5 : " + str.charAt(5) + "<br>";
+            result += "Pad Start 25 * : " + str.padStart(25,"*") + "<br>";
+            result += "Pad End 25 @ : " + str.padEnd(25, "santhiya") + "<br>";
+            result += "To UpperCase : " + str.toUpperCase() + "<br>";
+            result += "To LowerCase : " + str.toLowerCase() + "<br>";
+            result += "Split by space : " + str.split(" ") + "<br>";
+            console.log(str.split("o"));
+            result += "Slice 5 10 : " + str.slice(5,10) + "<br>";
+            result += "Str : " + str + "<br>";
+            str = " Hi Hello How are you ";
+            console.log(str);
+            result += "Str Trim : " + str.trim() + "<br>";
+            console.log(str.trim());
+            result += "Str : " + str + "<br>";
+
+            document.getElementById('strOp').innerHTML = result;
+        }
+        strEx();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Date Functions</h2>
+        <p id="clck"></p>
+        <p id="dtOp"></p>
+
+
+        <script>
+
+            function dateEx(){
+                let result = "";
+
+                let dt = new Date();
+
+                result += "Date : " + dt + "<br>";
+                result += "Get Full Year : " + dt.getFullYear() + "<br>";
+                result += "Get Month : " + dt.getMonth() + "<br>";
+                result += "Get Day : " + dt.getDay() + "<br>";
+                result += "Get Date : " + dt.getDate() + "<br>";
+                result += "Get Hour : " + dt.getHours() + "<br>";
+                result += "Get Mins : " + dt.getMinutes() + "<br>";
+                result += "Get Sec : " + dt.getSeconds() + "<br>";
+                result += "Get MilliSec : " + dt.getMilliseconds() + "<br>";
+                result += "Get Time : " + dt.getTime() + "<br>";
+                dt.setFullYear(2035);
+                result += "Set Year : " + dt + "<br>";
+                dt.setMonth(11);
+                result += "Set Month : " + dt + "<br>";
+                dt.setDate(30);
+                result += "Set Date : " + dt + "<br>";
+                result += "Get Day : " + dt.getDay() + "<br>";
+                dt.setHours(8);
+                result += "Set Hours : " + dt + "<br>";
+                dt.setMinutes(45);
+                result += "Set Mins : " + dt + "<br>";
+                result += "Date : " + dt + "<br>";
+                result += "Date : " + dt + "<br>";
+
+                let sevenDays = (24*60*60*1000)*7;
+                let currMilliSec = new Date().getTime();
+                let newDateMilliSec = sevenDays + currMilliSec;
+                let newDate = new Date();
+                result += "Date : " + newDate + "<br>";
+                newDate.setTime(newDateMilliSec);
+                result += "Date : " + newDate + "<br>";
+
+                document.getElementById('dtOp').innerHTML = result;
+            }
+
+            dateEx();
+
+            setInterval(()=>{
+                //document.getElementById('clck').innerHTML= new Date();
+                let dt = new Date();
+                document.getElementById('clck').innerHTML = dt.getHours() + " : " + dt.getMinutes() + " : " + dt.getSeconds();
+            },1000);
+
+        </script>
+    </div>
+</body>
+</html>

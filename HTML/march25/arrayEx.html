@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container mt-4">
+
+        <h2>Array Functions</h2>
+
+        <p id="arrOp"></p>
+    </div>
+    <script>
+        function arrFunc(){
+
+            let students = ["Krishna", "Keerthana", "Akash", "Pranav", "Fedric", "Akash"];
+            let arrOp = "";
+
+            console.log(students);
+            arrOp += "Array : " + students + "<br>";
+            arrOp += "Length : " + students.length + "<br>";
+            arrOp += "Push PonRaj : " + students.push("PonRaj") + "<br>";
+            arrOp += "Push Vijay : " + students.push("Vijay") + "<br>";
+            arrOp += "Array : " + students + "<br>";
+            arrOp += "Pop : " + students.pop() + "<br>";
+            arrOp += "Array : " + students + "<br>";
+            arrOp += "Array Shift : " + students.shift() + "<br>";
+            arrOp += "Array Unshift Suresh: " + students.unshift("Suresh") + "<br>";
+            arrOp += "Array : " + students + "<br>";
+            arrOp += "Array Includes Pranav : " + students.includes("Pranav") + "<br>";
+            arrOp += "Array Includes Santhosh : " + students.includes("Santhosh") + "<br>";            
+            arrOp += "Array Index Of Akash : " + students.indexOf("Akash") + "<br>";            
+            arrOp += "Last Index of Akash : " + students.lastIndexOf("Akash") + "<br>";            
+            arrOp += "Index Of Surya : " + students.indexOf("Surya") + "<br>";            
+            arrOp += "LastIndex Of Surya : " + students.lastIndexOf("Surya") + "<br>";            
+            arrOp += "Index Of Keerthana : " + students.indexOf("Keerthana") + "<br>";            
+            arrOp += "Last Index Of Keerthana : " + students.indexOf("Keerthana") + "<br>";            
+            arrOp += "Reverse : " + students.reverse() + "<br>";            
+            arrOp += "Sort : " + students.sort() + "<br>";            
+            arrOp += "toString : " + students.toString() + "<br>";
+            console.log("ToString : " + students.toString());            
+            arrOp += "Join By / : " + students.join("/") + "<br>";            
+            arrOp += "Concat Bharathi , Sandhya : " + students.concat(["Barathi", "Sandhya"]) + "<br>";            
+            arrOp += "Slice 2 6 : " + students.slice(2, 6) + "<br>";            
+            // arrOp += "Fill 2 6 : " + students.fill("@", 2, 6) + "<br>";            
+            // arrOp += "Array : " + students + "<br>"; 
+
+
+
+            document.getElementById('arrOp').innerHTML = arrOp;
+        }
+        arrFunc();
+
+        let arra=[-5,6,-4,3,-1,4,-8];
+            let nagative=0;
+
+            for(i=0; i,arra.length;i++){
+                if(arra[i]<=0){
+                    nagative=arra[i];
+                }
+            }
+            console.log(nagative);
+
+
+    </script>
+
+    
+</body>
+</html>

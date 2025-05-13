@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="product" name="products" onchange="getProductPrice()">
+        <option>---option---</option>
+        <option>fruits</option>
+        <option>veg</option>
+        <option>dairy</option>
+        <option>rice</option>
+        <option>oil</option>
+    </select>
+    <p id="Pprice"></p>
+
+
+    <script>
+    let day = 7;
+    
+
+switch (day) {
+    case 1:
+        console.log("Monday");
+        break;
+    case 2:
+        console.log("Tuesday");
+        break;
+    case 3:
+        console.log("Wednesday");
+        break;
+    case 4:
+        console.log("Thursday");
+        break;
+    case 5:
+        console.log("Friday");
+        break;
+    case 6:
+    case 7:
+        console.log("Weekend");
+        break;
+    default:
+        console.log("Invalid day");
+}
+
+function getProductPrice(){
+    
+    let price=document.getElementById('product').value;
+    console.log(price);
+    let result = "";
+
+    switch(price){
+        case "rice":
+            result="rice : 100";
+            break;
+        case "fruits":
+            result= "fruits : 200";
+            break;
+
+    }console.log(result);
+    document.getElementById('Pprice').innerHTML = result;
+   
+}
+  
+
+
+</script>
+
+</body>
+</html>

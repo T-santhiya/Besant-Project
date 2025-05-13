@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+</head>
+<body>
+    <div>
+        <h2>Type of Functions</h2>
+        <script>
+            //Named Function
+                //Func Definition
+            function sayHello(){
+                console.log("Hello Team");
+            }
+                //Func Call
+            sayHello();
+
+            //Arrow Function
+            let sayHai = () => { console.log("Hai From Arrow Function...")};
+            sayHai();
+            console.log(sayHai);
+
+            //Inner Function
+            function outerFunc(){
+                console.log("Outer Function...");
+                function innerFunc(){
+                    console.log("Inner Function...");
+                }
+                innerFunc();
+            }
+            outerFunc();
+            //innerFunc();
+
+            //Closure Function
+            function initCounter(){
+                let counter=0;
+
+                function increCounter(){
+                    return counter++;
+                }
+                return increCounter;
+            }
+
+            let increCount = initCounter();
+            console.log(increCount);
+            console.log("IncreCounter : " + increCount());
+            console.log("IncreCounter : " + increCount());
+            console.log("IncreCounter : " + increCount());
+            console.log("IncreCounter : " + increCount());
+            console.log("IncreCounter : " + increCount());
+
+
+            //CallBack Function
+            function mainFunc(paraFunc){
+                console.log("Main Function Called...");
+                paraFunc();
+            }
+
+            mainFunc(()=>{console.log("Function passed as Parameter...")});
+
+
+            //Recursive Function
+            function loopFunc(num){
+
+                if(num >= 0){
+                    console.log("Recursive Function : "+ num);
+                    loopFunc(num-1);
+                }
+            }
+
+            loopFunc(10);
+        </script>
+    </div>
+</body>
+</html>

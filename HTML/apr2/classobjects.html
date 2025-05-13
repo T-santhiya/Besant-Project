@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+    let person = {
+        name: "John",
+        age: 30,
+        greet: function() {
+            console.log("Hello, my name is" + this.name);
+        }
+    };
+    console.log(person.age);
+    person.greet();
+
+
+
+    class Person {
+            constructor(name, age) {
+                 this.name = name;
+                this.age = age;
+            }
+            greet() {
+                console.log("Hello, my name is " + this.name);
+                console.log("Hello, my age is " + this.age);
+            }
+        }
+        let sandy = new Person("santhiya", 21);
+        sandy.greet(); 
+
+
+
+        class car{
+            constructor(){
+                this.brand="toyota";
+                this.modal="carmy";
+            }
+        }
+        let car1 =new car();
+        console.log(car1.brand);
+        console.log(car1.modal);
+
+    </script>
+    
+
+         
+</body>
+</html>

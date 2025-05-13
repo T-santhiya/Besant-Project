@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</head>
+    <style>
+        .house{
+            width: 800px;
+            height: 600px;
+            border-color: blueviolet;
+            border-width: 5px;
+            border-style: solid;
+            margin-left: 200px;
+            margin-top: 100px;
+            background-color: burlywood;
+            
+        }
+        .fan{
+            margin-left: 400px;
+            width: 100px;
+            height: 50px;
+            border-color: black;
+            border-style: solid;
+            border-width: 2px;
+                
+        }
+        .tv{
+            margin-top: 150px;
+            width: 100px;
+            height: 50px;
+            border-color: black;
+            border-style: solid;
+            border-width: 2px;
+            
+        }
+        .light{
+            margin-top: 100px;
+            margin-left: 740px;
+            width: 50px;
+            height: 80px;
+            border-color: black;
+            border-style: solid;
+            border-width: 2px;
+           
+        }
+        .door{
+           margin-top: 110px;
+           margin-left: 320px;
+           width: 80px;
+            height: 50px;
+            border-color: black;
+            border-style: solid;
+            border-width: 2px;
+        }
+    </style>
+<body>
+    
+    <h2>HOUSE TASK</h2>
+    <div>
+        <button onclick="door()">door</button>
+        <button onclick="fan()">fan</button>
+        <button onclick="light()">light</button>
+        <button onclick="tv()">tv</button>
+        <button id="main" onclick="main()"> <i class="bi bi-toggle-on"></i>main</button>
+       
+    </div>
+
+    <div class="house">
+    
+    <div class="fan" id="fan"><i class="bi bi-fan fs-2"></i></div>
+    <div class="tv" id="tv"><i class="bi bi-tv fs-2"></i></div>
+    <div class="light" id="light"><i class="bi bi-lightbulb fs-2"></i></div>
+    <div class="door" id="door"><i class="bi bi-door-open fs-2"></i></div>
+   
+    </div>
+
+    <script>
+        let ismainOn = false;
+     
+
+        function setdefault() {
+            document.getElementById('door').style.backgroundColor= "";
+            document.getElementById('fan').style.backgroundColor= "";
+            document.getElementById('light').style.backgroundColor= "";
+            document.getElementById('tv').style.backgroundColor= "";
+        
+        }
+
+        function door(){
+            setdefault();
+            document.getElementById('door').style.backgroundColor= "green";
+        }
+    
+        function fan(){
+            setdefault(); 
+            document.getElementById('fan').style.backgroundColor= "green";
+        }
+        function light(){
+            setdefault();
+            document.getElementById('light').style.backgroundColor= "green";
+        }
+    
+        function tv(){
+            setdefault();
+            document.getElementById('tv').style.backgroundColor= "green";
+        }
+    
+        function main(){
+            if(ismainOn){
+                setdefault();
+                ismainOn=false;
+            }
+            else{
+                document.getElementById('door').style.backgroundColor= "green";
+                document.getElementById('fan').style.backgroundColor= "green";
+                document.getElementById('light').style.backgroundColor= "green";
+                document.getElementById('tv').style.backgroundColor= "green";
+                ismainOn=true;
+            }
+            
+        }
+    
+        
+    </script>
+    
+</body>
+</html>

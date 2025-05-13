@@ -1,269 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Decor Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-     <style>
-      .inner-rating{
-        background-color:#70d67c;
-        width: 20%;
-        
-      }
-      .a{
-        display: flex;
-       padding-left: 5px;
-      }
-      .rating{
-        display: flex;
-      }
-      .home{
-        width: 300px;
-        margin-left: 20px;
-        margin-top: 30px;
-      }
-      .button{
-        margin-left: 1400px;
-        
-      }
-
-      
-     </style>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .product-card {
+      height: 100%;
+    }
+    .cart-section {
+      background-color: #fff3cd;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .cart-item {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+    .total-section {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .remove-btn {
+      cursor: pointer;
+      color: red;
+    }
+  </style>
 </head>
 <body>
+<div class="container my-4">
+  <h1 class="text-success">Home Decor Items</h1>
+  <div class="row" id="product-list">
+    <!-- Product Cards will be inserted here -->
+  </div>
 
-    <div class="home">  
-        <h1>Home decor items</h1>
-      </div>
-    
-      <div class="button">
-        <button type="button" class="btn btn-warning">Your cart</button>
-      </div>
-    
-    
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="../projects/asserts/home decor/bird house.jpg" class="card-img-top" alt="Apple"
-                        style="height: 200px;">
-                        <div class="card-body">
-                          <h5 class="card-title">Bird house</h5>
-                          <div class="rating">
-                            <div class="inner-rating">
-                              <strong><i class="bi bi-star"></i>&nbsp;4.1</strong>  
-                            </div>
-                            <div>
-                            &nbsp;(895)
-                            </div>
-                          </div>
-                          <div class="a">
-                        <del>₹620</del>&nbsp;<h6>₹520</h6><br>
-                         </div>
-                         <div>
-                          <a href="#" class="btn btn-warning">Add to cart</a>     
-                         </div>       
-                        </div>
-                </div>
-             </div>
-    
-    
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-                    <img src="../projects/asserts/home decor/buddha showpiece.jpg" class="card-img-top" alt="Apple"
-                    style="height: 200px;">
-                  <div class="card-body">
-                          <h5 class="card-title">Buddha showpiece</h5>
-                      <div class="rating">
-                      <div class="inner-rating">
-                        <strong><i class="bi bi-star"></i>&nbsp;4.8</strong>  
-                      </div>
-                      <div>
-                      &nbsp;(2489)
-                      </div>
-                    </div>
-                    <div class="a">
-                  <del>₹810</del>&nbsp;<h6>₹785</h6><br>
-                   </div>
-                    <a href="#" class="btn btn-warning">Add to cart</a>             
-                  </div>
+  <!-- Cart Section -->
+  <div class="cart-section mt-5">
+    <h3>Your Cart</h3>
+    <div id="cart-items"></div>
+    <div class="total-section mt-3">
+      <p>Total Price: ₹<span id="total-price">0</span></p>
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Delivery Address</label>
+      <textarea class="form-control" id="address" rows="2" placeholder="Enter delivery address"></textarea>
+    </div>
+    <button class="btn btn-success" onclick="checkout()">Pay</button>
+  </div>
+</div>
+
+<script>
+  const products = [
+    { name: "Bird house", price: 520, kg: 1, img: "bird house.jpg" },
+    { name: "Buddha showpiece", price: 785, kg: 1, img: "buddha showpiece.jpg" },
+    { name: "Antique showpiece", price: 490, kg: 1, img: "cooter antiquse showpiece.jpg" },
+    { name: "Wall Decor", price: 279, kg: 1, img: "greenery flower wall decor.jpg" },
+    { name: "Flower Wall", price: 385, kg: 1, img: "family quote home decor.jpg" },
+    { name: "Metal Vases", price: 1899, kg: 2, img: "metal flower vases.jpg" },
+    { name: "Terracotta Pots", price: 950, kg: 2, img: "resin art canvas.jpg" },
+    { name: "Shivmaan Art", price: 120, kg: 1, img: "shivmaan art decor.jpg" },
+    { name: "Windchime", price: 299, kg: 1, img: "Windchime.jpg" }
+  ];
+
+  const cart = [];
+
+  function renderProducts() {
+    const container = document.getElementById("product-list");
+    products.forEach((product, index) => {
+      const col = document.createElement("div");
+      col.className = "col-md-4 mb-4";
+      col.innerHTML = `
+        <div class="card product-card">
+          <img src="../projects/asserts/home decor/${product.img}" class="card-img-top" alt="${product.name}" style="height: 200px;">
+          <div class="card-body">
+            <h5 class="card-title">${product.name}</h5>
+            <p>Price: ₹${product.price}</p>
+            <p>Weight: ${product.kg} kg</p>
+            <button class="btn btn-warning" onclick="addToCart(${index})">Add to Cart</button>
           </div>
-       </div>
-    
-       <div class="col">
-        <div class="card" style="width: 18rem;">
-                <img src="../projects/asserts/home decor/cooter antiquse showpiece.jpg" class="card-img-top" alt="Apple"
-                style="height: 200px;">
-              <div class="card-body">
-                      <h5 class="card-title">Cooter Antique showpiece</h5>
-                  <div class="rating">
-                  <div class="inner-rating">
-                    <strong><i class="bi bi-star"></i>&nbsp;4.4</strong>  
-                  </div>
-                  <div>
-                  &nbsp;(2874)
-                  </div>
-                </div>
-                <div class="a">
-              <del>₹530</del>&nbsp;<h6>₹490</h6><br>
-               </div>
-                <a href="#" class="btn btn-warning">Add to cart</a>             
-              </div>
-      </div>
-    </div>
-    
-    
-    <div class="row mt-4">
-      <div class="col mt-3">
-          <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/home decor/family quote home decor.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-              <div class="card-body">
-                <h5 class="card-title">Family quote home decor</h5>
-                <div class="rating">
-                  <div class="inner-rating">
-                    <strong><i class="bi bi-star"></i>&nbsp;3.9</strong>  
-                  </div>
-                  <div>
-                  &nbsp;(947)
-                  </div>
-                </div>
-                <div class="a">
-              <del>₹340</del>&nbsp;<h6>₹279</h6><br>
-               </div>
-                <a href="#" class="btn btn-warning">Add to cart</a>             
-              </div>
-      </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/home decor/greenery flower wall decor.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">Greenery flower wall decor</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.5</strong>  
-                </div>
-                <div>
-                &nbsp;(2489)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹400</del>&nbsp;<h6>₹385</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/home decor/metal flower vases.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">Metal flower vases</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.3</strong>  
-                </div>
-                <div>
-                &nbsp;(2795)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹2100</del>&nbsp;<h6>₹1899</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
-    
-    
-    
-    <div class="row mt-4">
-      <div class="col mt-3">
-          <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/home decor/resin art canvas.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-              <div class="card-body">
-                <h5 class="card-title">Terracotta handing pots</h5>
-                <div class="rating">
-                  <div class="inner-rating">
-                    <strong><i class="bi bi-star"></i>&nbsp;4.2</strong>  
-                  </div>
-                  <div>
-                  &nbsp;(1895)
-                  </div>
-                </div>
-                <div class="a">
-              <del>₹1100</del>&nbsp;<h6>₹950</h6><br>
-               </div>
-                <a href="#" class="btn btn-warning">Add to cart</a>             
-              </div>
-      </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/home decor/shivmaan art decor.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">Shivmaan art</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.4</strong>  
-                </div>
-                <div>
-                &nbsp;(947)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹155</del>&nbsp;<h6>₹120</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/home decor/windchime.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">windchime</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.2</strong>  
-                </div>
-                <div>
-                &nbsp;(978)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹360</del>&nbsp;<h6>₹299</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
+        </div>`;
+      container.appendChild(col);
+    });
+  }
 
-            </div>
-    
-          </div> 
+  function addToCart(index) {
+    const existing = cart.find(item => item.name === products[index].name);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ ...products[index], quantity: 1 });
+    }
+    renderCart();
+  }
 
-    
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    renderCart();
+  }
+
+  function renderCart() {
+    const cartItems = document.getElementById("cart-items");
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <strong>${item.name}</strong><br>
+            ₹${item.price} x ${item.quantity} = ₹${itemTotal} (${item.kg * item.quantity} kg)
+          </div>
+          <div>
+            <span class="remove-btn" onclick="removeFromCart(${index})"><i class="bi bi-trash-fill"></i></span>
+          </div>
+        </div>`;
+      cartItems.appendChild(div);
+    });
+
+    document.getElementById("total-price").innerText = total;
+  }
+
+  function checkout() {
+    const address = document.getElementById("address").value.trim();
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+    if (!address) {
+      alert("Please enter your delivery address.");
+      return;
+    }
+    alert("Payment successful! Your order will be delivered to:\n" + address);
+    cart.length = 0;
+    renderCart();
+    document.getElementById("address").value = "";
+  }
+
+  // Initial render
+  renderProducts();
+</script>
 </body>
 </html>

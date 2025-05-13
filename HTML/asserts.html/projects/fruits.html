@@ -1,284 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-     <style>
-      .inner-rating{
-        background-color:#70d67c;
-        width: 20%;
-        
-      }
-      .a{
-        display: flex;
-       padding-left: 5px;
-      }
-      .rating{
-        display: flex;
-      }
-      .fruits{
-        background-color:cornflowerblue;
-        width: 150px;
-        margin-left: 20px;
-        margin-top: 30px;
-      }
-      .button{
-        margin-left: 1400px;
-        
-      }
-
-      
-     </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fruit Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <style>
+    body { padding: 20px; }
+    .fruits {
+      background-color: cornflowerblue;
+      color: white;
+      padding: 10px 20px;
+      display: inline-block;
+    }
+    .cart-btn { float: right; }
+    .rating .inner-rating {
+      background-color: #70d67c;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .price-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    #cart-section { margin-top: 40px; }
+    #cart-details { display: none; }
+    .kg-input { width: 60px; }
+  </style>
 </head>
 <body>
-  <div class="fruits">  
-    <h1>Fruits</h1>
+
+<div class="d-flex justify-content-between align-items-center">
+  <div class="fruits"><h2>Fruits</h2></div>
+  <button class="btn btn-warning cart-btn" onclick="toggleCart()">Your Cart</button>
+</div>
+
+<div class="row mt-4" id="product-list"></div>
+
+<div id="cart-section" class="mt-5">
+  <h3>Your Cart</h3>
+  <div id="cart-details" class="border p-3">
+    <div id="cart-product"></div>
+    <h5 class="mt-3">Grand Total: ₹<span id="grand-total">0</span></h5>
+    <div class="mt-3">
+      <label for="address">Delivery Address:</label>
+      <textarea id="address" class="form-control" rows="3" placeholder="Enter your address"></textarea>
+    </div>
+    <div class="mt-3 d-flex gap-2">
+      <button class="btn btn-success" onclick="payNow()">Pay</button>
+      
+    </div>
   </div>
+</div>
 
-  <div class="button">
-    <button type="button" class="btn btn-warning">Your cart</button>
-  </div>
+<script>
+  const products = [
+    { name: "Apple", price: 200, original: 250, img: "apple.jpg", rating: 4.1 },
+    { name: "Banana", price: 50, original: 70, img: "banana.jpg", rating: 4.1 },
+    { name: "Guava", price: 33, original: 52, img: "guava.jpg", rating: 4.0 },
+    { name: "Black Grapes", price: 77, original: 98, img: "black grapes.jpg", rating: 4.1 },
+    { name: "Pomegranate", price: 90, original: 120, img: "maathulai.jpg", rating: 4.5 },
+    { name: "Orange", price: 180, original: 210, img: "orange.jpg", rating: 4.3 },
+    { name: "Papaya", price: 44, original: 60, img: "Pappaya.jpg", rating: 4.2 },
+    { name: "Pineapple", price: 86, original: 113, img: "pineapple.jpg", rating: 4.4 },
+    { name: "Strawberry", price: 499, original: 620, img: "strawberry.jpg", rating: 4.2 }
+  ];
 
+  let cart = [];
 
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="../projects/asserts/fruits/apple.jpg" class="card-img-top" alt="Apple"
-                    style="height: 200px;">
-                    <div class="card-body">
-                      <h5 class="card-title">Apple</h5>
-                      <h5>1 kg</h5>
-                      <div class="rating">
-                        <div class="inner-rating">
-                          <strong><i class="bi bi-star"></i>&nbsp;4.1</strong>  
-                        </div>
-                        <div>
-                        &nbsp;(254)
-                        </div>
-                      </div>
-                      <div class="a">
-                    <del>₹250</del>&nbsp;<h6>₹200</h6><br>
-                     </div>
-                     <div>
-                      <a href="#" class="btn btn-warning">Add to cart</a>     
-                     </div>       
-                    </div>
-            </div>
-         </div>
-
-
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-                <img src="../projects/asserts/fruits/banana.jpg" class="card-img-top" alt="Apple"
-                style="height: 200px;">
-              <div class="card-body">
-                      <h5 class="card-title">Banana</h5>
-                      <h5>10 pcs</h5>
-                  <div class="rating">
-                  <div class="inner-rating">
-                    <strong><i class="bi bi-star"></i>&nbsp;4.1</strong>  
-                  </div>
-                  <div>
-                  &nbsp;(548)
-                  </div>
-                </div>
-                <div class="a">
-              <del>₹70</del>&nbsp;<h6>₹50</h6><br>
-               </div>
-                <a href="#" class="btn btn-warning">Add to cart</a>             
-              </div>
-      </div>
-   </div>
-
-   <div class="col">
-    <div class="card" style="width: 18rem;">
-            <img src="../projects/asserts/fruits/guava.jpg" class="card-img-top" alt="Apple"
-            style="height: 200px;">
+  function renderProducts() {
+    const productList = document.getElementById('product-list');
+    productList.innerHTML = '';
+    products.forEach((product, index) => {
+      const col = document.createElement('div');
+      col.className = "col-md-4 mb-4";
+      col.innerHTML = `
+        <div class="card" style="width: 100%;">
+          <img src="../projects/asserts/fruits/${product.img}" class="card-img-top" style="height: 200px;" alt="${product.name}">
           <div class="card-body">
-                  <h5 class="card-title">Guava</h5>
-                  <h5>500 g</h5>
-              <div class="rating">
+            <h5 class="card-title">${product.name}</h5>
+            <div class="rating mb-2">
               <div class="inner-rating">
-                <strong><i class="bi bi-star"></i>&nbsp;4.0</strong>  
-              </div>
-              <div>
-              &nbsp;(367)
+                <strong><i class="bi bi-star"></i> ${product.rating}</strong>
               </div>
             </div>
-            <div class="a">
-          <del>₹52</del>&nbsp;<h6>₹33</h6><br>
-           </div>
-            <a href="#" class="btn btn-warning">Add to cart</a>             
+            <div class="price-row">
+              <del>₹${product.original}</del><h6>₹${product.price}/kg</h6>
+            </div>
+            <input type="number" class="form-control mt-2 kg-input" id="qty-${index}" min="1" value="1" />
+            <button class="btn btn-warning mt-2" onclick="addToCart(${index})">Add to cart</button>
           </div>
-  </div>
-</div>
-
-
-<div class="row mt-4">
-  <div class="col mt-3">
-      <div class="card" style="width: 18rem;">
-          <img src="../projects/asserts/fruits/black grapes.jpg" class="card-img-top" alt="Apple"
-          style="height: 200px;">
-          <div class="card-body">
-            <h5 class="card-title">Black grapes</h5>
-            <h5>500 kg</h5>
-            <div class="rating">
-              <div class="inner-rating">
-                <strong><i class="bi bi-star"></i>&nbsp;4.1</strong>  
-              </div>
-              <div>
-              &nbsp;(258)
-              </div>
-            </div>
-            <div class="a">
-          <del>₹98</del>&nbsp;<h6>₹77</h6><br>
-           </div>
-            <a href="#" class="btn btn-warning">Add to cart</a>             
-          </div>
-  </div>
-</div>
-
-
-<div class="col">
-  <div class="card" style="width: 18rem;">
-          <img src="../projects/asserts/fruits//maathulai.jpg" class="card-img-top" alt="Apple"
-          style="height: 200px;">
-        <div class="card-body">
-                <h5 class="card-title">Pomegranate</h5>
-                <h5>1 kg</h5>
-            <div class="rating">
-            <div class="inner-rating">
-              <strong><i class="bi bi-star"></i>&nbsp;4.5</strong>  
-            </div>
-            <div>
-            &nbsp;(478)
-            </div>
-          </div>
-          <div class="a">
-        <del>₹120</del>&nbsp;<h6>₹90</h6><br>
-         </div>
-          <a href="#" class="btn btn-warning">Add to cart</a>             
         </div>
-</div>
-</div>
+      `;
+      productList.appendChild(col);
+    });
+  }
 
+  function addToCart(index) {
+    const qtyInput = document.getElementById(`qty-${index}`);
+    const kg = parseFloat(qtyInput.value);
+    if (isNaN(kg) || kg <= 0) {
+      alert("Please enter a valid quantity in kg.");
+      return;
+    }
 
-<div class="col">
-  <div class="card" style="width: 18rem;">
-          <img src="../projects/asserts/fruits/orange.jpg" class="card-img-top" alt="Apple"
-          style="height: 200px;">
-        <div class="card-body">
-                <h5 class="card-title">Orange</h5>
-                <h5>1 kg</h5>
-            <div class="rating">
-            <div class="inner-rating">
-              <strong><i class="bi bi-star"></i>&nbsp;4.3</strong>  
-            </div>
-            <div>
-            &nbsp;(384)
-            </div>
+    const product = { ...products[index], kg, id: Date.now() };
+    cart.push(product);
+    renderCart();
+  }
+
+  function renderCart() {
+    const cartContainer = document.getElementById('cart-product');
+    const grandTotalSpan = document.getElementById('grand-total');
+    if (cart.length === 0) {
+      cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+      document.getElementById('cart-details').style.display = 'none';
+      grandTotalSpan.textContent = "0";
+      return;
+    }
+
+    document.getElementById('cart-details').style.display = 'block';
+    cartContainer.innerHTML = '';
+    let grandTotal = 0;
+
+    cart.forEach((item, index) => {
+      const total = item.price * item.kg;
+      grandTotal += total;
+
+      const div = document.createElement('div');
+      div.className = "d-flex align-items-center justify-content-between gap-3 mb-3";
+      div.innerHTML = `
+        <div class="d-flex gap-3 align-items-center">
+          <img src="../projects/asserts/fruits/${item.img}" style="height: 80px; width: 80px;">
+          <div>
+            <h6>${item.name}</h6>
+            <p>₹${item.price} × ${item.kg}kg = ₹${total.toFixed(2)}</p>
           </div>
-          <div class="a">
-        <del>₹210</del>&nbsp;<h6>₹180</h6><br>
-         </div>
-          <a href="#" class="btn btn-warning">Add to cart</a>             
         </div>
-</div>
-</div>
+        <button class="btn btn-sm btn-danger" onclick="removeItem(${index})">Remove</button>
+      `;
+      cartContainer.appendChild(div);
+    });
 
+    grandTotalSpan.textContent = grandTotal.toFixed(2);
+  }
 
+  function removeItem(index) {
+    cart.splice(index, 1);
+    renderCart();
+  }
 
-<div class="row mt-4">
-  <div class="col mt-3">
-      <div class="card" style="width: 18rem;">
-          <img src="../projects/asserts/fruits/Pappaya.jpg" class="card-img-top" alt="Apple"
-          style="height: 200px;">
-          <div class="card-body">
-            <h5 class="card-title">Pappyaa</h5>
-            <h5>1 pc</h5>
-            <div class="rating">
-              <div class="inner-rating">
-                <strong><i class="bi bi-star"></i>&nbsp;4.2</strong>  
-              </div>
-              <div>
-              &nbsp;(341)
-              </div>
-            </div>
-            <div class="a">
-          <del>₹60</del>&nbsp;<h6>₹44</h6><br>
-           </div>
-            <a href="#" class="btn btn-warning">Add to cart</a>             
-          </div>
-  </div>
-</div>
+  function toggleCart() {
+    const cartSection = document.getElementById('cart-section');
+    cartSection.scrollIntoView({ behavior: "smooth" });
+  }
 
+  function clearCart() {
+    cart = [];
+    document.getElementById('address').value = '';
+    renderCart();
+    alert("Cart has been cleared.");
+  }
 
-<div class="col">
-  <div class="card" style="width: 18rem;">
-          <img src="../projects/asserts/fruits/pineapple.jpg" class="card-img-top" alt="Apple"
-          style="height: 200px;">
-        <div class="card-body">
-                <h5 class="card-title">Pineapple</h5>
-                <h5>1 pc (800g-1000g)</h5>
-            <div class="rating">
-            <div class="inner-rating">
-              <strong><i class="bi bi-star"></i>&nbsp;4.4</strong>  
-            </div>
-            <div>
-            &nbsp;(359)
-            </div>
-          </div>
-          <div class="a">
-        <del>₹113</del>&nbsp;<h6>₹86</h6><br>
-         </div>
-          <a href="#" class="btn btn-warning">Add to cart</a>             
-        </div>
-</div>
-</div>
+  function payNow() {
+    const address = document.getElementById('address').value.trim();
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+    if (!address) {
+      alert("Please enter a delivery address.");
+      return;
+    }
 
+    const summary = cart.map(p => `${p.name} (${p.kg}kg)`).join(', ');
+    alert(`Thank you! Your order for: ${summary}\nWill be delivered to: ${address}`);
+    clearCart();
+  }
 
-<div class="col">
-  <div class="card" style="width: 18rem;">
-          <img src="../projects/asserts/fruits/strawberry.jpg" class="card-img-top" alt="Apple"
-          style="height: 200px;">
-        <div class="card-body">
-                <h5 class="card-title">Strawberry</h5>
-                <h5>500 g</h5>
-            <div class="rating">
-            <div class="inner-rating">
-              <strong><i class="bi bi-star"></i>&nbsp;4.2</strong>  
-            </div>
-            <div>
-            &nbsp;(450)
-            </div>
-          </div>
-          <div class="a">
-        <del>₹620</del>&nbsp;<h6>₹499</h6><br>
-         </div>
-          <a href="#" class="btn btn-warning">Add to cart</a>             
-        </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-        </div>
-
-      </div> 
+  renderProducts();
+</script>
 </body>
 </html>

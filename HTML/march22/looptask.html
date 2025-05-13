@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Loop task</h2>
+
+    <div>
+        <h2>validateEvenNumber</h2>
+        First num : <input type="text" id="first" name="number"/><Br><br>
+        Last name : <input type="text" id="last" name="number"/>
+        <button onclick="validateEvenNumber()" >apply</button>
+
+        <p id="even"></p>
+    </div>
+        
+    <div>
+        <h2>Withoutfivenumbers</h2>
+            First num : <input type="text" id="firstnumber" name="number"/><Br><br>
+            Last name : <input type="text" id="lastnumber" name="number"/>
+            <button onclick="validateFiveNumber()" >apply</button>
+            <p id="fivenumber"></p>
+
+    </div>
+        <script>
+        function validateEvenNumber(){
+            let firstnumber=document.getElementById('first').value;
+            let lastnumber=document.getElementById('last').value;
+            let evennumbers ="Evennumber:";
+
+            for(let i=firstnumber; i<=lastnumber ;i++){
+              if(i %2==0){
+                // console.log(i);
+                evennumbers=evennumbers+","+(i);
+
+              }
+
+            }
+
+            document.getElementById('even').innerHTML=evennumbers;
+        }
+
+        function validateFiveNumber(){
+            let firstnumber=document.getElementById('firstnumber').value;
+            let lastnumber=document.getElementById('lastnumber').value;
+            let withoutfivenumbers ="withoutfivenumber:";
+
+            for(let i=firstnumber; i<=lastnumber; i++){
+                if((i %5!=0)||(i %10==0)){
+                    // console.log(i);
+                    withoutfivenumbers=withoutfivenumbers+","+(i);
+                }
+            }
+
+            document.getElementById('fivenumber').innerHTML=withoutfivenumbers;
+        }
+
+        </script>
+
+        
+
+</body>
+</html>

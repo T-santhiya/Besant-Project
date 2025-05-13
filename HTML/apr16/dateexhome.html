@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Date examples</h2>
+
+    <p id="dateop"></p>
+    <p id="date"></p>
+
+    <script>
+        function dateEx(){
+
+            let result= ""; 
+
+            let dt= new Date();
+
+            result+= "date : " + dt + "<br>";
+            result+= "GetFullYear : " + dt.getFullYear() + "<br>";
+            result+= "Getmonth : " + dt.getMonth() + "<br>";
+            result+= "getday : " + dt.getDay() + "<br>";
+            result+= "getdate : " + dt.getDate() + "<br>";
+            result+= "gethour : " + dt.getHours() + "<br>";
+            result+= "getminutes : " + dt.getMinutes() + "<br>";
+            result+= "getMilliSeconds : " + dt.getMilliseconds() + "<br>";
+            result+= "gettime : " + dt.getTime() + "<br>";
+            dt.setFullYear(2036);
+            result+= "setFullyear : " + dt + "<br>";
+            dt.setMonth(5);
+            result+= "setMonth : " + dt + "<br>";
+            dt.setDate(26);
+            result+= "setDate : " + dt + "<br>";
+            dt.setHours(8);
+            result+= "sethours : " + dt + "<br>";
+            dt.setMinutes(55);
+            result+= "setminutes : " + dt + "<br>";
+            result += "Date : " + dt + "<br>";
+           
+           
+
+
+          document.getElementById("dateop").innerHTML=result;
+        }
+        dateEx();
+
+        setInterval(()=>{
+            let dt= new Date();
+            document.getElementById("date").innerHTML= dt.getHours ()+ " : " + dt.getMinutes() + " : " + dt.getSeconds() ;
+            //document.getElementById('date').innerHTML= new Date();
+
+        }
+    ),1000;
+    </script>
+    
+</body>
+</html>

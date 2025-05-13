@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Way Signal</title>
+    <style>
+        .col-one{
+            background-color: green;
+            width: 300px;
+            height: 300px;
+            margin-bottom: 50px;
+            margin-right: 120px;
+        }
+        .horizontal-line, .horizontal-line-two {
+            width: 300px; 
+            height: 15px; 
+            background-color: black; 
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .horizontal-line::after, .horizontal-line-two::after {
+            content: '\2192'; /* Right arrow */
+            position: absolute;
+            right: -20px;
+            top: -5px;
+            font-size: 24px;
+            color: white;
+        }
+        .col-two{
+            background-color:yellow;
+            width: 300px;
+            height: 300px;
+        }
+        .col-three{
+            background-color: red;
+            width: 300px;
+            height: 300px;
+            margin-right: 120px;
+        }
+        .vertical-line{
+            width: 15px;
+            height: 300px; 
+            background-color: black; 
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .vertical-line::after {
+            content: '\2193'; /* Down arrow */
+            position: absolute;
+            left: -5px;
+            bottom: -20px;
+            font-size: 24px;
+            color: white;
+        }
+        .col-four{
+            background-color: blueviolet;
+            width: 300px;
+            height: 300px;
+        }
+        .row-one, .row-two {
+            display: flex;
+        }
+        .road {
+            padding-left: 200px;
+        }
+        .border{
+            display: flex;
+        }
+        .signal-two{
+            display: flex; 
+        }
+        .east{
+            margin-right: 850px;
+        }
+        .signal-one{
+            margin-left: 350px;
+        }
+        .highlight {
+            background-color: green !important;
+        }
+    </style>
+</head>
+<body>
+    <h2>Four Way Traffic Signal</h2>
+    <div class="road">
+        <div class="row-one">
+            <div class="col-one"></div>            
+            <div class="north"><button onclick="highlightPath('north')">North</button></div>
+            <div class="vertical-line" id="vertical-line-north"></div>
+            <div class="col-two"></div> 
+        </div>
+
+        <div class="signal-two">
+          <div class="east"><button onclick="highlightPath('east')">East</button></div>
+          <div class="west"><button onclick="highlightPath('west')">West</button></div> 
+        </div>
+
+        <div class="border">
+            <div class="horizontal-line" id="horizontal-line-west"></div>
+            <div class="horizontal-line-two" id="horizontal-line-east"></div>
+        </div>
+
+        <div class="row-two">
+            <div class="col-three"></div>
+            <div class="vertical-line" id="vertical-line-south"></div>
+            <div class="col-four"></div>
+        </div>
+
+        <div class="signal-one">
+            <div class="south"><button onclick="highlightPath('south')">South</button></div>
+        </div>
+    </div>
+
+    <script>
+        function resetHighlights() {
+            document.querySelectorAll('.horizontal-line, .horizontal-line-two, .vertical-line').forEach(el => {
+                el.classList.remove('highlight');
+            });
+        }
+
+        function highlightPath(direction) {
+            resetHighlights();
+            if (direction === 'north' || direction === 'south') {
+                document.getElementById('vertical-line-north').classList.add('highlight');
+                document.getElementById('vertical-line-south').classList.add('highlight');
+            }
+            if (direction === 'east' || direction === 'west') {
+                document.getElementById('horizontal-line-east').classList.add('highlight');
+                document.getElementById('horizontal-line-west').classList.add('highlight');
+            }
+        }
+    </script>
+</body>
+</html>

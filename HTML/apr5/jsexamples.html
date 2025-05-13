@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="msg"></h1>
+
+    <h2>FD Rate Calculator</h2>
+    <input type="number" id="input" placeholder="enter the rate value"/><br>
+    <button onclick="ratecalculate()">Calculate</button>
+
+    <P id="result">
+
+    </P>
+
+    
+    <script>
+        // let tickets=prompt("enter the ticket value")
+        // console.log("ticket price is",tickets*4 );
+
+        // let a=prompt("enter a number")
+        // console.log("the number is ",Number(a)+6)
+
+        // let b=prompt("enter a number")
+        // console.log("the number is ",Number(b)/2)
+
+    //     let message = document.getElementById('msg')
+    //     message.innerHTML="wlcome to our website"
+
+    //     let str=("My name is santhiya")
+    //    let str2=("hii guys gud morning")
+
+    //    let firstname="santhiya"
+    //    let lastname="t"
+    //    let city="chennai"
+
+    //    console.log(firstname + " " + lastname + " lives in " + city);
+
+    //    let msg= `${firstname} ${lastname} lives in ${city}`
+    //    console.log(msg);
+
+    //    let cat= 'cat name is"poppy"' 
+    //    console.log(cat);
+
+  
+    //    let arr=[1,2,3,43,32,"santhiya",123,87,74]
+    //    arr.push(10)
+    //    arr.pop()
+    //    arr.unshift(5)
+    //    arr.shift()
+    //    arr.splice(4,2,"sumathi")
+    //    arr.splice(1,0,"sandy")
+    //    arr.reverse()
+       
+    //    console.log(arr)
+
+
+    //    let firstarr=[1,2,3,4]
+    //    let secondarr=[1,2,3,4]
+    //  let joinarr=  firstarr.concat(secondarr)
+    //  console.log(joinarr)
+
+
+    //    let matrix=[[1,2,3],
+    //                [4,5,6], 
+    //                [7,8,9],
+    //             ]
+        
+    //     console.log(matrix)
+
+    // let arr=[5,8,10,7,9,11]
+    // arr.unshift(100)
+    // arr.push(1000)
+    
+    //     console.log(arr)
+    // console.log(arr.length)
+
+    function ratecalculate(){
+        let months=document.getElementById("input").value;
+        let rate=0
+
+        if(months<3){
+            rate=5.8
+        }else if(months>=3 && months<=6){
+            rate=6.5
+        }else if(months>=7 && months<=9){
+            rate=6.8
+        }else{
+            rate=7
+        }
+        let result=document.getElementById("result")
+        result.innerHTML ="your interst is " + rate +"%";
+    }
+      
+
+    function isPositive(num){
+        return num > 10
+    }
+    console.log(isPositive(15))
+
+
+    function sayHello(){
+        console.log("hii my name is santhiya");
+        
+    }
+    sayHello()
+
+
+    console.log(findProduct(2,10));//hoisting
+    function findProduct(a,b){
+        return a*b
+    }
+    console.log(findProduct);
+
+//default parameters
+    function greet(name="then"){
+        console.log("hii", name);
+    }
+    greet("santhiya");
+    greet();
+
+
+//function expression
+    let a=100
+    let isEven =function(num){
+        return num%2==0
+    }
+    console.log(isEven(27));
+
+
+    let arr =[4,5,8,2,3]
+    let addSum = function(arr){
+        let sum=0
+        for(let val of arr){
+            sum = sum+val
+        }return sum
+        
+    }
+    console.log(addSum(arr));
+
+//arrow function
+
+    let volume=(l,b,h) => {
+        return l*b*h}
+    console.log(volume(5,8,3));
+
+
+//generator function
+
+        function * infiniteCounter(){
+            let i=1
+            while(true){
+                yield i++ ;
+            }
+        }
+        let gen =infiniteCounter()  
+        console.log(gen.next().value);
+        console.log(gen.next().value);
+        console.log(gen.next().value);
+        console.log(gen.next().value);
+        console.log(gen.next().value);
+
+
+//map function
+        let price=[54,24,31]
+        let newprice=price.map(x => x * 2)
+        console.log(newprice);
+
+
+//array of object
+        let input=[
+            {name:"santhiya", age:21 },
+            {name:"santhosh", age:23 },
+            {name:"sumathi", age:37 },
+            {name:"maithika", age:8 },
+            {name:"niraimahti", age:3 },
+
+        ];
+
+        let ages=input.map(z=>z.age);
+        let name=input.map(x=>x.name);
+        console.log(ages);
+        console.log(name);
+
+
+//filter
+        let costAcc=[247,64,845,21,69,658];
+
+        let greterThan100 = costAcc.filter(x => x>100);
+        console.log(greterThan100);
+
+//reduce
+        let cost=[24,58,4,48,84];
+
+        let newCost=cost.reduce((total,ele)=>total+ele);
+        console.log(newCost)
+
+//returning function , inner function
+
+        function outer(){
+            let outerVariable = "santhiya"
+            function inner(){
+                let innerVariable= "santhosh"
+
+                console.log("outer" ,outerVariable);
+                console.log("inner",innerVariable);
+                console.log(newCost);
+
+            }
+            inner();
+        }
+        outer();
+
+
+//closure function
+
+        function addSums(x){
+            return function(y){
+                return x+y
+            }
+
+        }
+
+        let add10 = addSums(10)
+        console.log(add10(100));
+
+        let add500 = addSums(500)
+        console.log(add500(500));
+
+//map
+
+        let map1= new Map()
+            map1.set("a",5)
+            map1.set("b",10)
+            map1.set("a",6)
+
+            console.log(map1);
+            console.log(map1.has("b"));
+
+
+//OOPS
+
+       let user1 ={
+        name :"santhiya",
+        age : 22,
+        
+        login(){
+          console.log("your logged in")
+        },
+        logout(){
+            console.log ("your logged out")
+        },
+       
+        }
+       user1.login();
+
+
+        
+     
+    
+    
+    </script>
+
+
+    
+
+</body>
+</html>

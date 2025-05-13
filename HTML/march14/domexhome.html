@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <h2>dom exammples</h2>
+    <div>
+        <input type="text" id="username" name="uesrname" placeholder="username"/><br>
+        <input type="password" id="pswd" name="pswd" placeholder="password"/><br>
+        <input type="number" id="age" name="age" placeholder="age"/><br>
+        <input type="button" value="submit" onclick="clickbox()"/>
+        <p id="press">press the value of login</p>
+    </div>
+    <script>
+        function clickbox(){
+
+            let username = document.getElementById('username').value;
+            let pswd = document.getElementById('pswd').value;
+            let age = document.getElementById('age').value;
+
+            console.log(pswd, username, age);
+
+           document.getElementById('username').value= "sumathi";
+
+           document.getElementById('age').value= "67";
+
+           document.getElementById('press').innerHTML= "functions of js";
+           document.getElementById('press').style.backgroundColor= "yellow";
+           document.getElementById('press').className = "apple";
+
+        
+            console.log(type("20"))
+            
+        }
+    
+    </script>
+
+    <style>
+        .apple{
+            border-width: 2px;  
+            border-color: blue;
+        }
+    </style>
+
+
+
+
+
+
+
+    </div>      
+    
+</body>
+</html>

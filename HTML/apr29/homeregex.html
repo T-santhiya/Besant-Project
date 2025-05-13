@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>reg examples</h2>
+    PASSWORD : <input type="text" id="password" name="pswd"/><br>
+    <button onclick="validatePassword()">Validate</button>
+
+    <script>
+        function degEx(){
+
+            let ptrn=/hii/;
+            console.log(ptrn.test("hii im santhiya"));
+            console.log(ptrn.test("im santhiya")); 
+            console.log(ptrn.test("im santhiya hii"));
+            console.log(ptrn.test("sandyhii"));
+            
+            let str="santhiya";
+            console.log(str.match("i"));
+
+            let ptn=/["a-z"]/;
+            console.log(ptn.test(8547));
+            console.log(ptn.test("santhiyaz")); 
+            console.log(ptn.test("hii"));
+            console.log(ptn.test("sandy"));
+
+            let mblPtrn=/[6-9]+[0-9]{9}$/;
+            console.log("***mblnum****");
+            console.log(mblPtrn.test("8220303237"));
+            console.log(mblPtrn.test("52874136"));
+            console.log(mblPtrn.test("5863114785"));
+            console.log(mblPtrn.test("97517270dwqd24"));
+
+
+            let email=/[a-z0-9]+[@]+[a-z]+[.]+[a-z]{3}$/;
+            console.log("***email***");
+                console.log(email.test("santhiya2909@gmail.com"));
+                console.log(email.test("santhiya2909@gmail.com"));
+                console.log(email.test("santhiya2909@gmail.comm"));
+                console.log(email.test("santhiya@gmail.com"));
+                console.log(email.test("santhiya2909@gmail.c"));
+
+
+              let password=/["a-z0-9"]{8-10}$/;
+            console.log("***pswd***");
+              console.log(password.test("822031as"));
+              console.log(password.test("8220av"));
+              console.log(password.test("822031assw"));
+        }
+        degEx();
+
+        function validatePassword(){
+            const password=document.getElementById('password').value;
+
+            let pswd=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).*$/
+           
+
+            if(pswd.test(password)){
+                console.log("valid");
+            }else{
+                console.log("invalid");
+            }
+        }
+        validatePassword();
+
+    //    function validatePassword(){
+    //     let password=/^(?=(A-Z)+(a-z))*()/
+    //     console.log(password.test("822031as"));
+    //     let testContent=password.test
+        
+    //     // if(validatePassword){
+    //     //     console.log("password is valid");
+    //     // }else{
+    //     //     console.log("password is not valid");
+    //     // }
+    //    }
+    //    validatePassword();
+
+
+    </script>
+    
+</body>
+</html>

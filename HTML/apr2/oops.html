@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPs</title>
+</head>
+<body>
+    <div>
+        <h2>OOPs</h2>
+
+        <script>
+            class Account       
+            {
+                accName = "";
+                balance = 0;
+                bankName = "";
+
+                openAcc(){
+                    console.log("Account Opened for " + this.accName + " in " + this.bankName);
+                }
+                checkBalance(){
+                    console.log("Balance " + this.balance);
+                }
+                deposit(dpAmt){
+                    console.log("Amount deposited : " + dpAmt);
+                }
+                withdraw(wthAmt){
+                    console.log("Amount deposited : " + wthAmt);
+                }
+                closeAcc(){
+                    console.log("Account closed for " + this.accName + " in " + this.bankName);
+                }
+
+                constructor(bankName, balance, accName){
+                    this.bankName = bankName;
+                    this.balance = balance;
+                    this.accName = accName;
+                }
+
+            }
+            let acc1 = new Account();
+            acc1.openAcc();
+            acc1.accName = "Suresh";
+            acc1.balance = 1000;
+            acc1.bankName = "HDFC";
+            acc1.openAcc();
+
+            let acc2 = new Account();
+            acc2.bankName = "Axis";
+            acc2.balance = 5000;
+            acc2.accName = "Akash";
+            acc2.openAcc();
+
+            let acc3 = new Account("SBI", 6000, "Divya");
+            acc3.openAcc();
+            acc3.checkBalance();
+            
+        </script>
+    </div>
+    
+</body>
+</html>

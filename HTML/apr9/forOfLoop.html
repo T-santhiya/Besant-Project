@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>For Of Loop</h2>
+        <script>
+
+            let products = ["Rice", "Oil", "Choco", "Cookie", "Ice"];
+            for(let product of products){
+                console.log(product);
+            }
+
+            products.forEach(product => { console.log(product);});
+
+            let filteredProducts = products.filter(product => { return product.length > 3;});
+            console.log(filteredProducts);
+            let filArr= [];
+            for(let idx=0; idx<products.length;idx++){
+                if(products[idx].length > 3){
+                    filArr.push(products[idx]);
+                }
+            }
+
+            let mapProducts = products.map(product => {return product.concat("10")});
+            console.log(mapProducts);
+
+            let nums = [10,19,27,32,48,55];
+            console.log(nums.some(num => { return num%2 == 0;}));
+            console.log(nums.every(num => { return num%2 == 0;}));
+        </script>
+    </div>
+    <div>
+        <h2>SetTimeOut & SetInterval</h2>
+        <p id="timer"></p>
+        <script>
+
+            setTimeout(()=>{
+                console.log("Printing in Delay...");
+            },5000);
+
+            setInterval(()=>{
+                console.log("Printing in interval");
+            }, 1000);
+
+
+            let min = 0;
+            let sec = 0;
+            setInterval(()=>{
+                document.getElementById('timer').innerHTML = min + ":" + sec;
+                sec++;
+                if(sec == 59){
+                    min++;
+                    sec =0;
+                }
+            }, 1000);
+        </script>
+    </div>
+</body>
+</html>

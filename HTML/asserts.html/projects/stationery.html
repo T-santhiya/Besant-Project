@@ -1,274 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-     <style>
-      .inner-rating{
-        background-color:#70d67c;
-        width: 20%;
-        
-      }
-      .a{
-        display: flex;
-       padding-left: 5px;
-      }
-      .rating{
-        display: flex;
-      }
-      .things{
-        color:blue;
-        width: 200px;
-        margin-left: 20px;
-        margin-top: 30px;
-      }
-      .button{
-        margin-left: 1400px;
-        
-      }
-
-      
-     </style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stationery Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <style>
+    .inner-rating { background-color:#70d67c; width: 20%; padding: 2px 5px; border-radius: 4px; color: white; font-size: 0.9em; }
+    .rating { display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
+    .a { display: flex; align-items: center; gap: 5px; }
+    .cart-section, .address-section { margin-top: 30px; }
+    .cart-table th, .cart-table td { vertical-align: middle; }
+    .cart-table img { width: 50px; height: 50px; object-fit: cover; }
+  </style>
 </head>
-<body>
+<body class="container py-4">
 
-    <div class="things">  
-        <h1>Stationery</h1>
-      </div>
-    
-      <div class="button">
-        <button type="button" class="btn btn-warning">Your cart</button>
-      </div>
-    
-    
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="../projects/asserts/stationery/brown note book cover.jpg" class="card-img-top" alt="Apple"
-                        style="height: 200px;">
-                        <div class="card-body">
-                          <h5 class="card-title">Brown notebook cover</h5>
-                          <div class="rating">
-                            <div class="inner-rating">
-                              <strong><i class="bi bi-star"></i>&nbsp;4.1</strong>  
-                            </div>
-                            <div>
-                            &nbsp;(3214)
-                            </div>
-                          </div>
-                          <div class="a">
-                        <del>₹75</del>&nbsp;<h6>₹56</h6><br>
-                         </div>
-                         <div>
-                          <a href="#" class="btn btn-warning">Add to cart</a>     
-                         </div>       
-                        </div>
-                </div>
-             </div>
-    
-    
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-                    <img src="../projects/asserts/stationery/color pencils.jpg" class="card-img-top" alt="Apple"
-                    style="height: 200px;">
-                  <div class="card-body">
-                          <h5 class="card-title">Color pencils</h5>
-                      <div class="rating">
-                      <div class="inner-rating">
-                        <strong><i class="bi bi-star"></i>&nbsp;4.1</strong>  
-                      </div>
-                      <div>
-                      &nbsp;(2145)
-                      </div>
-                    </div>
-                    <div class="a">
-                  <del>₹32</del>&nbsp;<h6>₹25</h6><br>
-                   </div>
-                    <a href="#" class="btn btn-warning">Add to cart</a>             
-                  </div>
-          </div>
-       </div>
-    
-       <div class="col">
-        <div class="card" style="width: 18rem;">
-                <img src="../projects/asserts/stationery/desk organiser.jpg" class="card-img-top" alt="Apple"
-                style="height: 200px;">
-              <div class="card-body">
-                      <h5 class="card-title">Desk organiser</h5>
-                  <div class="rating">
-                  <div class="inner-rating">
-                    <strong><i class="bi bi-star"></i>&nbsp;4.0</strong>  
-                  </div>
-                  <div>
-                  &nbsp;(1896)
-                  </div>
-                </div>
-                <div class="a">
-              <del>₹650</del>&nbsp;<h6>₹570</h6><br>
-               </div>
-                <a href="#" class="btn btn-warning">Add to cart</a>             
-              </div>
-      </div>
-    </div>
-    
-    
-    <div class="row mt-4">
-      <div class="col mt-3">
-          <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/stationery/double side tape.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-              <div class="card-body">
-                <h5 class="card-title">Double side tape</h5>
-                <div class="rating">
-                  <div class="inner-rating">
-                    <strong><i class="bi bi-star"></i>&nbsp;4.5</strong>  
-                  </div>
-                  <div>
-                  &nbsp;(2582)
-                  </div>
-                </div>
-                <div class="a">
-              <del>₹62</del>&nbsp;<h6>₹45</h6><br>
-               </div>
-                <a href="#" class="btn btn-warning">Add to cart</a>             
-              </div>
-      </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/stationery/file folder.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">File folder</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.5</strong>  
-                </div>
-                <div>
-                &nbsp;(974)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹45</del>&nbsp;<h6>₹35</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/stationery/geometry box.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">Geometry box</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.3</strong>  
-                </div>
-                <div>
-                &nbsp;(947)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹264</del>&nbsp;<h6>₹248</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
-    
-    
-    
-    <div class="row mt-4">
-      <div class="col mt-3">
-          <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/stationery/note.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-              <div class="card-body">
-                <h5 class="card-title">Notebook</h5>
-                <div class="rating">
-                  <div class="inner-rating">
-                    <strong><i class="bi bi-star"></i>&nbsp;4.2</strong>  
-                  </div>
-                  <div>
-                  &nbsp;(842)
-                  </div>
-                </div>
-                <div class="a">
-              <del>₹60</del>&nbsp;<h6>₹44</h6><br>
-               </div>
-                <a href="#" class="btn btn-warning">Add to cart</a>             
-              </div>
-      </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/stationery/pens.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">Pen</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.4</strong>  
-                </div>
-                <div>
-                &nbsp;(2489)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹49</del>&nbsp;<h6>₹35</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
-    
-    
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-              <img src="../projects/asserts/stationery/school bags.jpg" class="card-img-top" alt="Apple"
-              style="height: 200px;">
-            <div class="card-body">
-                    <h5 class="card-title">School bag</h5>
-                <div class="rating">
-                <div class="inner-rating">
-                  <strong><i class="bi bi-star"></i>&nbsp;4.2</strong>  
-                </div>
-                <div>
-                &nbsp;(2436)
-                </div>
-              </div>
-              <div class="a">
-            <del>₹700</del>&nbsp;<h6>₹650</h6><br>
-             </div>
-              <a href="#" class="btn btn-warning">Add to cart</a>             
-            </div>
-    </div>
-    </div>
-    
-      
-            </div>
-    
-          </div> 
+  <h2 class="text-primary mb-4">🛍️ Stationery Shop</h2>
 
+  <!-- Product List -->
+  <div class="row" id="product-list">
+    <!-- Product items will be populated here by JS -->
+  </div>
 
-    
+  <!-- Cart Section -->
+  <div class="cart-section">
+    <h4 class="text-success mt-5">🛒 Your Cart</h4>
+    <table class="table table-bordered cart-table">
+      <thead class="table-light">
+        <tr>
+          <th>Product</th>
+          <th>Price (₹)</th>
+          <th>Qty</th>
+          <th>Total (₹)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="cart-body">
+        <!-- Cart items go here -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="3" class="text-end">Total</th>
+          <th id="cart-total">₹0</th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- Address Input -->
+  <div class="address-section">
+    <h5 class="mb-2">📍 Delivery Address:</h5>
+    <textarea class="form-control mb-3" id="delivery-address" placeholder="Enter your full address here..." rows="3"></textarea>
+    <button class="btn btn-primary" onclick="checkout()">Pay</button>
+  </div>
+
+  <script>
+    const products = [
+      { name: 'Brown notebook', price: 56, image: 'Brown note book cover.jpg' },
+      { name: 'Color pencils', price: 25, image: 'color pencils.jpg' },
+      { name: 'Desk organiser', price: 570, image: 'desk organiser.jpg' },
+      { name: 'Double side tape', price: 45, image: 'double side tape.jpg' },
+      { name: 'File folder', price: 35, image: 'file folder.jpg' },
+      { name: 'Geometry box', price: 248, image: 'geometry box.jpg' },
+      { name: 'Notebook', price: 44, image: 'note.jpg' },
+      { name: 'Pen', price: 35, image: 'pens.jpg' },
+      { name: 'School bag', price: 650, image: 'School bags.jpg' }
+    ];
+
+    const cart = {};
+
+    function renderProducts() {
+      const list = document.getElementById('product-list');
+      products.forEach((p, index) => {
+        const col = document.createElement('div');
+        col.className = 'col-md-4 mb-4';
+        col.innerHTML = `
+          <div class="card">
+            <img src="../projects/asserts/stationery/${p.image}" class="card-img-top" style="height: 200px;" />
+            <div class="card-body">
+              <h5 class="card-title">${p.name}</h5>
+              <div class="rating"><div class="inner-rating"><i class="bi bi-star"></i> 4.${index%5+1}</div><span>(${1000+index*100})</span></div>
+              <div class="a"><del>₹${Math.round(p.price * 1.2)}</del><h6 class="m-0 text-success">₹${p.price}</h6></div>
+              <button class="btn btn-warning mt-2" onclick="addToCart(${index})">Add to cart</button>
+            </div>
+          </div>`;
+        list.appendChild(col);
+      });
+    }
+
+    function addToCart(index) {
+      const p = products[index];
+      if (cart[p.name]) {
+        cart[p.name].qty += 1;
+      } else {
+        cart[p.name] = { ...p, qty: 1 };
+      }
+      renderCart();
+    }
+
+    function removeFromCart(name) {
+      delete cart[name];
+      renderCart();
+    }
+
+    function renderCart() {
+      const body = document.getElementById('cart-body');
+      body.innerHTML = '';  
+      let total = 0;
+      for (let name in cart) {
+        const item = cart[name];
+        const row = document.createElement('tr');
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+        row.innerHTML = `
+          <td><img src="${item.image}" /> ${name}</td>
+          <td>₹${item.price}</td>
+          <td>${item.qty} pc(s)</td>
+          <td>₹${subtotal}</td>
+          <td><button class="btn btn-danger btn-sm" onclick="removeFromCart('${name}')">Remove</button></td>
+        `;
+        body.appendChild(row);
+      }
+      document.getElementById('cart-total').innerText = `₹${total}`;
+    }
+
+    function checkout() {
+      const address = document.getElementById('delivery-address').value.trim();
+      if (Object.keys(cart).length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      if (!address) {
+        alert("Please enter a delivery address.");
+        return;
+      }
+      alert("🎉 Order placed successfully!\nThank you for shopping.");
+      // Clear cart and address
+      for (let name in cart) delete cart[name];
+      renderCart();
+      document.getElementById('delivery-address').value = '';
+    }
+
+    renderProducts();
+  </script>
 </body>
 </html>
