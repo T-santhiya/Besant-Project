@@ -1,0 +1,12 @@
+Section {
+      position: fixed;
+      top: 130px;       /* Match header */
+      bottom: 20px;     /* Match footer */
+      left: 0;
+      right: 0;
+      background-color: bisque;
+      overflow-y: auto;
+      padding: 20px;
+   
+    }
+   

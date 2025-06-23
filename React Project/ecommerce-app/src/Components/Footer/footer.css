@@ -1,0 +1,10 @@
+ Footer {
+      height: 80px;
+      background-color: cornflowerblue;
+      position:relative;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      text-align: center;
+      padding-top: 20px;
+    }
